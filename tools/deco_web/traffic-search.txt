@@ -1,0 +1,600 @@
+
+--- modules/advanced/network/networkStatus/models.js | termo: Usage ---
+tworkType",mapping:"network_type"},{name:"signalStrength",mapping:"signal_strength"},{name:"profileName",mapping:"profile_name"},{name:"limitMode",mapping:"limit_mode"},{name:"dataUsage",mapping:"data_usage"},{name:"simNumber",mapping:"sim_number"},{name:"uplinkRate",mapping:"uplink_rate"},{name:"downlinkRate",mapping:"downlink_rate"}],convert:function(e){var a=e.mobile_cpe,n=$.su.b64Decode(a.profile_name);a.profile_name=n||$.su.CHAR.NETWORK_STATUS.NULL;var s="";switch(a.limit_mode){case"monthly":s=$.su.CHAR.NETWORK_STATUS.MONTHL
+
+--- modules/advanced/network/networkStatus/models.js | termo: usage ---
+etwork_type"},{name:"signalStrength",mapping:"signal_strength"},{name:"profileName",mapping:"profile_name"},{name:"limitMode",mapping:"limit_mode"},{name:"dataUsage",mapping:"data_usage"},{name:"simNumber",mapping:"sim_number"},{name:"uplinkRate",mapping:"uplink_rate"},{name:"downlinkRate",mapping:"downlink_rate"}],convert:function(e){var a=e.mobile_cpe,n=$.su.b64Decode(a.profile_name);a.profile_name=n||$.su.CHAR.NETWORK_STATUS.NULL;var s="";switch(a.limit_mode){case"monthly":s=$.su.CHAR.NETWORK_STATUS.MONTHLY_USED;break;case"dat
+
+--- modules/advanced/network/networkStatus/models.js | termo: flow ---
+=$.su.b64Decode(a.profile_name);a.profile_name=n||$.su.CHAR.NETWORK_STATUS.NULL;var s="";switch(a.limit_mode){case"monthly":s=$.su.CHAR.NETWORK_STATUS.MONTHLY_USED;break;case"data_flow":s=$.su.CHAR.NETWORK_STATUS.TOTAL_USED}var t=parseInt(a.data_usage)||0,_=$.su.CHAR.UNIT.KB;1048576<=t?(_=$.su.CHAR.UNIT.GB,t=(t/1048576).toFixed(1)):1024<=t&&(_=$.su.CHAR.UNIT.MB,t=(t/1024).toFixed(1)),a.data_usage=t+_+s,a.rsrp+=$.su.CHAR.UNIT.DBM,a.rsrq+=$.su.CHAR.UNIT.DB,a.snr+=$.su.CHAR.UNIT.DB,a.rssi+=$.su.CHAR.UNIT.DBM;var d=parseInt(a.uplink
+
+--- modules/advanced/network/networkStatus/models.js | termo: TOTAL ---
+.profile_name=n||$.su.CHAR.NETWORK_STATUS.NULL;var s="";switch(a.limit_mode){case"monthly":s=$.su.CHAR.NETWORK_STATUS.MONTHLY_USED;break;case"data_flow":s=$.su.CHAR.NETWORK_STATUS.TOTAL_USED}var t=parseInt(a.data_usage)||0,_=$.su.CHAR.UNIT.KB;1048576<=t?(_=$.su.CHAR.UNIT.GB,t=(t/1048576).toFixed(1)):1024<=t&&(_=$.su.CHAR.UNIT.MB,t=(t/1024).toFixed(1)),a.data_usage=t+_+s,a.rsrp+=$.su.CHAR.UNIT.DBM,a.rsrq+=$.su.CHAR.UNIT.DB,a.snr+=$.su.CHAR.UNIT.DB,a.rssi+=$.su.CHAR.UNIT.DBM;var d=parseInt(a.uplink_rate)||0,r=parseInt(a.downlink_ra
+
+--- modules/advanced/network/networkStatus/models.js | termo: usage ---
+K_STATUS.NULL;var s="";switch(a.limit_mode){case"monthly":s=$.su.CHAR.NETWORK_STATUS.MONTHLY_USED;break;case"data_flow":s=$.su.CHAR.NETWORK_STATUS.TOTAL_USED}var t=parseInt(a.data_usage)||0,_=$.su.CHAR.UNIT.KB;1048576<=t?(_=$.su.CHAR.UNIT.GB,t=(t/1048576).toFixed(1)):1024<=t&&(_=$.su.CHAR.UNIT.MB,t=(t/1024).toFixed(1)),a.data_usage=t+_+s,a.rsrp+=$.su.CHAR.UNIT.DBM,a.rsrq+=$.su.CHAR.UNIT.DB,a.snr+=$.su.CHAR.UNIT.DB,a.rssi+=$.su.CHAR.UNIT.DBM;var d=parseInt(a.uplink_rate)||0,r=parseInt(a.downlink_rate)||0,i=$.su.CHAR.UNIT.KBPS,u=$.
+
+--- modules/advanced/network/networkStatus/models.js | termo: usage ---
+OTAL_USED}var t=parseInt(a.data_usage)||0,_=$.su.CHAR.UNIT.KB;1048576<=t?(_=$.su.CHAR.UNIT.GB,t=(t/1048576).toFixed(1)):1024<=t&&(_=$.su.CHAR.UNIT.MB,t=(t/1024).toFixed(1)),a.data_usage=t+_+s,a.rsrp+=$.su.CHAR.UNIT.DBM,a.rsrq+=$.su.CHAR.UNIT.DB,a.snr+=$.su.CHAR.UNIT.DB,a.rssi+=$.su.CHAR.UNIT.DBM;var d=parseInt(a.uplink_rate)||0,r=parseInt(a.downlink_rate)||0,i=$.su.CHAR.UNIT.KBPS,u=$.su.CHAR.UNIT.KBPS;return 1024<=d&&(i=$.su.CHAR.UNIT.MBPS,d=(d/1024).toFixed(1)),1024<=r&&(u=$.su.CHAR.UNIT.MBPS,r=(r/1024).toFixed(1)),a.uplink_rate
+
+--- modules/advanced/network/networkStatus/view.html | termo: Usage ---
+T.NETWORK_TYPE}" data-options="{lteNetwrokTypeStore}" read-only="{true}" none-selected-text="{NETWORK_STATUS.NULL}"></div><div widget="displaylabel" data-bind="{mobileCpeModel.dataUsage}" label-field="{MAP_INTERNET.DATA}"></div><div widget="displaylabel" data-bind="{mobileCpeModel.uplinkRate}" label-field="{MAP_INTERNET.UPLOAD_SPEED}"></div><div widget="displaylabel" data-bind="{mobileCpeModel.downlinkRate}" label-field="{MAP_INTERNET.DOWNLOAD_SPEED}"></div><div widget="fieldset" data-bind="{lteStatusField}"><div widget="displayl
+
+--- modules/advanced/network/networkStatus/view.html | termo: UPLOAD ---
+label" data-bind="{mobileCpeModel.dataUsage}" label-field="{MAP_INTERNET.DATA}"></div><div widget="displaylabel" data-bind="{mobileCpeModel.uplinkRate}" label-field="{MAP_INTERNET.UPLOAD_SPEED}"></div><div widget="displaylabel" data-bind="{mobileCpeModel.downlinkRate}" label-field="{MAP_INTERNET.DOWNLOAD_SPEED}"></div><div widget="fieldset" data-bind="{lteStatusField}"><div widget="displaylabel" data-bind="{mobileCpeModel.rsrp}" label-field="{MAP_INTERNET.RSRP}"></div><div widget="displaylabel" data-bind="{mobileCpeModel.rsrq}" la
+
+--- modules/advanced/network/networkStatus/view.html | termo: DOWNLOAD ---
+-bind="{mobileCpeModel.uplinkRate}" label-field="{MAP_INTERNET.UPLOAD_SPEED}"></div><div widget="displaylabel" data-bind="{mobileCpeModel.downlinkRate}" label-field="{MAP_INTERNET.DOWNLOAD_SPEED}"></div><div widget="fieldset" data-bind="{lteStatusField}"><div widget="displaylabel" data-bind="{mobileCpeModel.rsrp}" label-field="{MAP_INTERNET.RSRP}"></div><div widget="displaylabel" data-bind="{mobileCpeModel.rsrq}" label-field="{MAP_INTERNET.RSRQ}"></div><div widget="displaylabel" data-bind="{mobileCpeModel.snr}" label-field="{MAP_INT
+
+--- modules/advanced/system/backupRestore/controllers.js | termo: total ---
+ices:["ajax","vtype"],views:["backupRestoreView"],listeners:{ev_on_launch:function(e,r,t,s,o,i,c){s.backupRestoreModel.load({success:function(e){(e=s.backupRestoreModel.getData()).totalTime!==undefined&&(r.restoreTime=1e3*e.totalTime)}})}},init:function(e,r,t,s,o,i){this.configViews({id:"backupRestoreView",items:[{id:"restore-file",note:n.su.CHAR.BACKUP_RESTORE.RESTORE_SIZE_LIMIT.replace("%size%",e.RESTORE_MAX_SIZE)}]}),this.listen({}),this.control({"#backup-button":{ev_button_click:function(){e.checkLan({success:function(){e.bac
+
+--- modules/advanced/system/backupRestore/controllers.js | termo: total ---
+iew"],listeners:{ev_on_launch:function(e,r,t,s,o,i,c){s.backupRestoreModel.load({success:function(e){(e=s.backupRestoreModel.getData()).totalTime!==undefined&&(r.restoreTime=1e3*e.totalTime)}})}},init:function(e,r,t,s,o,i){this.configViews({id:"backupRestoreView",items:[{id:"restore-file",note:n.su.CHAR.BACKUP_RESTORE.RESTORE_SIZE_LIMIT.replace("%size%",e.RESTORE_MAX_SIZE)}]}),this.listen({}),this.control({"#backup-button":{ev_button_click:function(){e.checkLan({success:function(){e.backup()}})}},"#restore-file":{ev_file_change:f
+
+--- modules/advanced/system/backupRestore/controllers.js | termo: upload ---
+""===t?r.setError(n.su.CHAR.VTYPETEXT.BLANKTEXT):!0!==o?r.setError(o):s>i.RESTORE_MAX_SIZE?r.setError(n.su.CHAR.ERROR["00000003"]):(r.setNormal(),e=!0),e},backup:function(){o.ajax.upload({proxy:"backupProxy",fileId:"backup-file"})},restoreFromFile:function(){c.backupRestoreView.restoreProgressBar.reset(),o.ajax.upload({proxy:"uploadRestoreFileProxy",fileId:"restore-file",timeout:72e4,success:function(e){clearTimeout(i.restoreTimer),i.restoreTimer=setTimeout(i.checkRestoreResult,1e3),i.restoreProgressTimer&&(clearTimeout(i.restoreP
+
+--- modules/advanced/system/backupRestore/controllers.js | termo: upload ---
+.setNormal(),e=!0),e},backup:function(){o.ajax.upload({proxy:"backupProxy",fileId:"backup-file"})},restoreFromFile:function(){c.backupRestoreView.restoreProgressBar.reset(),o.ajax.upload({proxy:"uploadRestoreFileProxy",fileId:"restore-file",timeout:72e4,success:function(e){clearTimeout(i.restoreTimer),i.restoreTimer=setTimeout(i.checkRestoreResult,1e3),i.restoreProgressTimer&&(clearTimeout(i.restoreProgressTimer),i.restoreProgressTimer=null),i.restoreProgressTimer=setTimeout(function(){i.restoreAnimate(i.restoreTime)},1200)},fail:
+
+--- modules/advanced/system/backupRestore/controllers.js | termo: upload ---
+!0),e},backup:function(){o.ajax.upload({proxy:"backupProxy",fileId:"backup-file"})},restoreFromFile:function(){c.backupRestoreView.restoreProgressBar.reset(),o.ajax.upload({proxy:"uploadRestoreFileProxy",fileId:"restore-file",timeout:72e4,success:function(e){clearTimeout(i.restoreTimer),i.restoreTimer=setTimeout(i.checkRestoreResult,1e3),i.restoreProgressTimer&&(clearTimeout(i.restoreProgressTimer),i.restoreProgressTimer=null),i.restoreProgressTimer=setTimeout(function(){i.restoreAnimate(i.restoreTime)},1200)},fail:function(){clea
+
+--- modules/advanced/system/backupRestore/models.js | termo: total ---
+$.su.modelManager.define("backupRestoreModel",{type:"model",fields:[{name:"totalTime",mapping:"totaltime"}],proxy:{url:$.su.url("/admin/firmware?form=config")}}),$.su.define("checkLanProxy",{extend:"IPFProxy",url:$.su.url("/admin/firmware?form=config"),preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,writeFilter:function(e){return $.extend({operation:"check"},e)}}),$.su.define("uploadRestoreFileProxy",{extend:"I
+
+--- modules/advanced/system/backupRestore/models.js | termo: total ---
+$.su.modelManager.define("backupRestoreModel",{type:"model",fields:[{name:"totalTime",mapping:"totaltime"}],proxy:{url:$.su.url("/admin/firmware?form=config")}}),$.su.define("checkLanProxy",{extend:"IPFProxy",url:$.su.url("/admin/firmware?form=config"),preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,writeFilter:function(e){return $.extend({operation:"check"},e)}}),$.su.define("uploadRestoreFileProxy",{extend:"IPFProxy",api:{upload
+
+--- modules/advanced/system/backupRestore/models.js | termo: upload ---
+u.url("/admin/firmware?form=config"),preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,writeFilter:function(e){return $.extend({operation:"check"},e)}}),$.su.define("uploadRestoreFileProxy",{extend:"IPFProxy",api:{upload:{url:$.su.url("/admin/firmware?form=config_multipart"),preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,writeFilter:function(e){return $.extend({operation:"restore"},e)}}}}),$.su.define("backupProxy",{extend:"IPFProxy",api:{upload:{url:$.su.url("/admin/firmware?form=config_multipart"),
+
+--- modules/advanced/system/backupRestore/models.js | termo: upload ---
+essEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,writeFilter:function(e){return $.extend({operation:"check"},e)}}),$.su.define("uploadRestoreFileProxy",{extend:"IPFProxy",api:{upload:{url:$.su.url("/admin/firmware?form=config_multipart"),preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,writeFilter:function(e){return $.extend({operation:"restore"},e)}}}}),$.su.define("backupProxy",{extend:"IPFProxy",api:{upload:{url:$.su.url("/admin/firmware?form=config_multipart"),preventSuccessEvent:!0,preventFailEvent:!0,preve
+
+--- modules/advanced/system/backupRestore/models.js | termo: upload ---
+entSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,writeFilter:function(e){return $.extend({operation:"restore"},e)}}}}),$.su.define("backupProxy",{extend:"IPFProxy",api:{upload:{url:$.su.url("/admin/firmware?form=config_multipart"),preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,writeFilter:function(e){return $.extend({operation:"backup"},e)}}}});
+
+--- modules/advanced/system/firmwareDeco/controllers.js | termo: download ---
+turn e}},{text:l.su.CHAR.FIRMWARE.LATEST_FIRMWARE_VERSION,dataIndex:"newVersion",renderer:function(e,r){var a;switch(r.deviceModel){case"M4R":a="https://www.tp-link.com/en/support/download/deco-m4/";break;case"P7":a="https://www.tp-link.com/en/support/download/deco-p7/";break;case"M9Plus":a="https://www.tp-link.com/en/support/download/deco-m9-plus/";break;case"M5":a="https://www.tp-link.com/en/support/download/deco-m5/";break;case"M3W":a="https://www.tp-link.com/en/support/download/deco-m3w/";break;case"X90":a="https://www.tp-link.c
+
+--- modules/advanced/system/firmwareDeco/controllers.js | termo: download ---
+Version",renderer:function(e,r){var a;switch(r.deviceModel){case"M4R":a="https://www.tp-link.com/en/support/download/deco-m4/";break;case"P7":a="https://www.tp-link.com/en/support/download/deco-p7/";break;case"M9Plus":a="https://www.tp-link.com/en/support/download/deco-m9-plus/";break;case"M5":a="https://www.tp-link.com/en/support/download/deco-m5/";break;case"M3W":a="https://www.tp-link.com/en/support/download/deco-m3w/";break;case"X90":a="https://www.tp-link.com/en/support/download/deco-x90/";break;case"X60":a="https://www.tp-link
+
+--- modules/advanced/system/firmwareDeco/controllers.js | termo: download ---
+ps://www.tp-link.com/en/support/download/deco-m4/";break;case"P7":a="https://www.tp-link.com/en/support/download/deco-p7/";break;case"M9Plus":a="https://www.tp-link.com/en/support/download/deco-m9-plus/";break;case"M5":a="https://www.tp-link.com/en/support/download/deco-m5/";break;case"M3W":a="https://www.tp-link.com/en/support/download/deco-m3w/";break;case"X90":a="https://www.tp-link.com/en/support/download/deco-x90/";break;case"X60":a="https://www.tp-link.com/en/support/download/deco-x60/";break;case"X20":a="https://www.tp-link.c
+
+--- modules/advanced/system/firmwareDeco/controllers.js | termo: download ---
+www.tp-link.com/en/support/download/deco-p7/";break;case"M9Plus":a="https://www.tp-link.com/en/support/download/deco-m9-plus/";break;case"M5":a="https://www.tp-link.com/en/support/download/deco-m5/";break;case"M3W":a="https://www.tp-link.com/en/support/download/deco-m3w/";break;case"X90":a="https://www.tp-link.com/en/support/download/deco-x90/";break;case"X60":a="https://www.tp-link.com/en/support/download/deco-x60/";break;case"X20":a="https://www.tp-link.com/en/support/download/deco-x20/";break;case"P9":a="https://www.tp-link.com/e
+
+--- modules/advanced/system/firmwareDeco/controllers.js | termo: download ---
+://www.tp-link.com/en/support/download/deco-m9-plus/";break;case"M5":a="https://www.tp-link.com/en/support/download/deco-m5/";break;case"M3W":a="https://www.tp-link.com/en/support/download/deco-m3w/";break;case"X90":a="https://www.tp-link.com/en/support/download/deco-x90/";break;case"X60":a="https://www.tp-link.com/en/support/download/deco-x60/";break;case"X20":a="https://www.tp-link.com/en/support/download/deco-x20/";break;case"P9":a="https://www.tp-link.com/en/support/download/deco-p9/";break;case"S4":a="https://www.tp-link.com/en
+
+--- modules/advanced/system/firmwareDeco/controllers.js | termo: download ---
+tps://www.tp-link.com/en/support/download/deco-m5/";break;case"M3W":a="https://www.tp-link.com/en/support/download/deco-m3w/";break;case"X90":a="https://www.tp-link.com/en/support/download/deco-x90/";break;case"X60":a="https://www.tp-link.com/en/support/download/deco-x60/";break;case"X20":a="https://www.tp-link.com/en/support/download/deco-x20/";break;case"P9":a="https://www.tp-link.com/en/support/download/deco-p9/";break;case"S4":a="https://www.tp-link.com/en/support/download/deco-s4/";break;case"E4R":a="https://www.tp-link.com/en/
+
+--- modules/advanced/system/firmwareDeco/controllers.js | termo: download ---
+ps://www.tp-link.com/en/support/download/deco-m3w/";break;case"X90":a="https://www.tp-link.com/en/support/download/deco-x90/";break;case"X60":a="https://www.tp-link.com/en/support/download/deco-x60/";break;case"X20":a="https://www.tp-link.com/en/support/download/deco-x20/";break;case"P9":a="https://www.tp-link.com/en/support/download/deco-p9/";break;case"S4":a="https://www.tp-link.com/en/support/download/deco-s4/";break;case"E4R":a="https://www.tp-link.com/en/support/download/deco-e4/";break;default:a="https://www.tp-link.com/en/sup
+
+--- modules/advanced/system/firmwareDeco/controllers.js | termo: download ---
+ps://www.tp-link.com/en/support/download/deco-x90/";break;case"X60":a="https://www.tp-link.com/en/support/download/deco-x60/";break;case"X20":a="https://www.tp-link.com/en/support/download/deco-x20/";break;case"P9":a="https://www.tp-link.com/en/support/download/deco-p9/";break;case"S4":a="https://www.tp-link.com/en/support/download/deco-s4/";break;case"E4R":a="https://www.tp-link.com/en/support/download/deco-e4/";break;default:a="https://www.tp-link.com/en/support/download/"}return null===e?"-":l.su.b64Decode(e)+"<a target='_blank' 
+
+--- modules/advanced/system/firmwareDeco/controllers.js | termo: download ---
+tps://www.tp-link.com/en/support/download/deco-x60/";break;case"X20":a="https://www.tp-link.com/en/support/download/deco-x20/";break;case"P9":a="https://www.tp-link.com/en/support/download/deco-p9/";break;case"S4":a="https://www.tp-link.com/en/support/download/deco-s4/";break;case"E4R":a="https://www.tp-link.com/en/support/download/deco-e4/";break;default:a="https://www.tp-link.com/en/support/download/"}return null===e?"-":l.su.b64Decode(e)+"<a target='_blank' style='color: #4acbd6' href='"+a+"'>("+l.su.CHAR.FIRMWARE.WHATS_NEW+")</a
+
+--- modules/advanced/system/firmwareDeco/controllers.js | termo: download ---
+https://www.tp-link.com/en/support/download/deco-x20/";break;case"P9":a="https://www.tp-link.com/en/support/download/deco-p9/";break;case"S4":a="https://www.tp-link.com/en/support/download/deco-s4/";break;case"E4R":a="https://www.tp-link.com/en/support/download/deco-e4/";break;default:a="https://www.tp-link.com/en/support/download/"}return null===e?"-":l.su.b64Decode(e)+"<a target='_blank' style='color: #4acbd6' href='"+a+"'>("+l.su.CHAR.FIRMWARE.WHATS_NEW+")</a>"}}]}}]}),this.listen({"models.firmwareTypeM.deviceType":{ev_value_chan
+
+--- modules/advanced/system/firmwareDeco/controllers.js | termo: download ---
+https://www.tp-link.com/en/support/download/deco-p9/";break;case"S4":a="https://www.tp-link.com/en/support/download/deco-s4/";break;case"E4R":a="https://www.tp-link.com/en/support/download/deco-e4/";break;default:a="https://www.tp-link.com/en/support/download/"}return null===e?"-":l.su.b64Decode(e)+"<a target='_blank' style='color: #4acbd6' href='"+a+"'>("+l.su.CHAR.FIRMWARE.WHATS_NEW+")</a>"}}]}}]}),this.listen({"models.firmwareTypeM.deviceType":{ev_value_change:function(e,r){var a=this.firmwareTypeObj[r];a.oversized_firmware&&"mas
+
+--- modules/advanced/system/firmwareDeco/controllers.js | termo: download ---
+"https://www.tp-link.com/en/support/download/deco-s4/";break;case"E4R":a="https://www.tp-link.com/en/support/download/deco-e4/";break;default:a="https://www.tp-link.com/en/support/download/"}return null===e?"-":l.su.b64Decode(e)+"<a target='_blank' style='color: #4acbd6' href='"+a+"'>("+l.su.CHAR.FIRMWARE.WHATS_NEW+")</a>"}}]}}]}),this.listen({"models.firmwareTypeM.deviceType":{ev_value_change:function(e,r){var a=this.firmwareTypeObj[r];a.oversized_firmware&&"master"!==a.role&&"RE"!==this.currentMode.workMode?(c.firmwareDecoView.fir
+
+--- modules/advanced/system/firmwareDeco/controllers.js | termo: upload ---
+ual"===f.modeFlag)if(f.isMobileMode){var e=a.firmwareTypeM.deviceType.getValue(),r=f.firmwareTypeObj[e];i.ajax.request({url:l.su.url("/admin/cloud?form=firmware"),data:{operation:"upload",params:{hw_id:r.hw_id,oem_id:r.oem_id,device_model:r.device_model}},timeout:3e4,success:function(e){f.startLocalUpgrade()}})}else f.startLocalUpgrade()}},"#local-upgrade-btn":{ev_button_click:function(){f.modeFlag="manual";var e=a.firmwareTypeM.deviceType.getValue(),r=c.firmwareDecoView.firmwareFile;r.getContainer().hasClass("error")||r.isEmpty()
+
+--- modules/advanced/system/firmwareDeco/controllers.js | termo: Download ---
+areDecoView.firmwareCheckCont.show(),l("#check-already-update").show(),n.firmwareDecoView.onlineUpgradeBtn.hide())}})},startOnlineUpgrade:function(){w.ajax.request({proxy:"firmwareDownloadProxy",success:function(){s.detectDownloadStatus()}})},detectDownloadStatus:function(){function i(){if(5===++t)return t=0,n.firmwareDecoView.progressbarWrap.hide(),n.firmwareDecoView.failRetryMsg.setContent(l.su.CHAR.ERROR["00000003"]),void n.firmwareDecoView.failRetryMsg.show();setTimeout(o,3e3)}function o(){w.ajax.request({proxy:"checkDownloadSta
+
+--- modules/advanced/system/firmwareDeco/controllers.js | termo: Download ---
+heck-already-update").show(),n.firmwareDecoView.onlineUpgradeBtn.hide())}})},startOnlineUpgrade:function(){w.ajax.request({proxy:"firmwareDownloadProxy",success:function(){s.detectDownloadStatus()}})},detectDownloadStatus:function(){function i(){if(5===++t)return t=0,n.firmwareDecoView.progressbarWrap.hide(),n.firmwareDecoView.failRetryMsg.setContent(l.su.CHAR.ERROR["00000003"]),void n.firmwareDecoView.failRetryMsg.show();setTimeout(o,3e3)}function o(){w.ajax.request({proxy:"checkDownloadStatusProxy",success:function(e){var r=e.down
+
+--- modules/advanced/system/firmwareDeco/controllers.js | termo: Download ---
+),n.firmwareDecoView.onlineUpgradeBtn.hide())}})},startOnlineUpgrade:function(){w.ajax.request({proxy:"firmwareDownloadProxy",success:function(){s.detectDownloadStatus()}})},detectDownloadStatus:function(){function i(){if(5===++t)return t=0,n.firmwareDecoView.progressbarWrap.hide(),n.firmwareDecoView.failRetryMsg.setContent(l.su.CHAR.ERROR["00000003"]),void n.firmwareDecoView.failRetryMsg.show();setTimeout(o,3e3)}function o(){w.ajax.request({proxy:"checkDownloadStatusProxy",success:function(e){var r=e.download_progress,a=e.status;if
+
+--- modules/advanced/system/firmwareDeco/controllers.js | termo: Download ---
+de(),n.firmwareDecoView.failRetryMsg.setContent(l.su.CHAR.ERROR["00000003"]),void n.firmwareDecoView.failRetryMsg.show();setTimeout(o,3e3)}function o(){w.ajax.request({proxy:"checkDownloadStatusProxy",success:function(e){var r=e.download_progress,a=e.status;if("fail"!==a&&"preparing"!==a){if(t=0,n.firmwareDecoView.proBar.setValue(r),100===r)return n.firmwareDecoView.proBar.setValue(100,1e3),void setTimeout(s.sendUpgradeDirective,1e3);setTimeout(o,3e3)}else i()},fail:i,error:i})}n.firmwareDecoView.proBar.reset(),n.firmwareDecoView.pr
+
+--- modules/advanced/system/firmwareDeco/controllers.js | termo: download ---
+.su.CHAR.ERROR["00000003"]),void n.firmwareDecoView.failRetryMsg.show();setTimeout(o,3e3)}function o(){w.ajax.request({proxy:"checkDownloadStatusProxy",success:function(e){var r=e.download_progress,a=e.status;if("fail"!==a&&"preparing"!==a){if(t=0,n.firmwareDecoView.proBar.setValue(r),100===r)return n.firmwareDecoView.proBar.setValue(100,1e3),void setTimeout(s.sendUpgradeDirective,1e3);setTimeout(o,3e3)}else i()},fail:i,error:i})}n.firmwareDecoView.proBar.reset(),n.firmwareDecoView.proBarTitle.setText(l.su.CHAR.FIRMWARE.DOWNLOADING)
+
+--- modules/advanced/system/firmwareDeco/controllers.js | termo: DOWNLOAD ---
+oid setTimeout(s.sendUpgradeDirective,1e3);setTimeout(o,3e3)}else i()},fail:i,error:i})}n.firmwareDecoView.proBar.reset(),n.firmwareDecoView.proBarTitle.setText(l.su.CHAR.FIRMWARE.DOWNLOADING),n.firmwareDecoView.progressbarWrap.show(),o()},sendUpgradeDirective:function(){function e(e){var r=l.su.CHAR.ERROR[e.errorCode.toString()]||l.su.CHAR.ERROR["00000004"];n.firmwareDecoView.progressbarWrap.hide(),n.firmwareDecoView.failRetryMsg.setContent(r),n.firmwareDecoView.failRetryMsg.show()}w.ajax.request({proxy:"sendUpgradeDirectiveProxy",
+
+--- modules/advanced/system/firmwareDeco/controllers.js | termo: upload ---
+=s.firmwareTypeObj[e];n.firmwareDecoView.proBar.reset(),n.firmwareDecoView.firmwareChecking.show(),n.firmwareDecoView.firmwareChecking.setText(l.su.CHAR.FIRMWARE.UPGRADING),w.ajax.upload({proxy:"uploadFirmwareProxy",fileId:"manual-upgrade-file",data:{hw_id:r.hw_id,oem_id:r.oem_id,device_model:r.device_model},timeout:72e4,success:function(e){s.sendLocalUpgradeDirective()},fail:function(){n.firmwareDecoView.firmwareChecking.hide()},error:function(){n.firmwareDecoView.firmwareChecking.hide()}})},sendLocalUpgradeDirective:function(){w
+
+--- modules/advanced/system/firmwareDeco/controllers.js | termo: upload ---
+Obj[e];n.firmwareDecoView.proBar.reset(),n.firmwareDecoView.firmwareChecking.show(),n.firmwareDecoView.firmwareChecking.setText(l.su.CHAR.FIRMWARE.UPGRADING),w.ajax.upload({proxy:"uploadFirmwareProxy",fileId:"manual-upgrade-file",data:{hw_id:r.hw_id,oem_id:r.oem_id,device_model:r.device_model},timeout:72e4,success:function(e){s.sendLocalUpgradeDirective()},fail:function(){n.firmwareDecoView.firmwareChecking.hide()},error:function(){n.firmwareDecoView.firmwareChecking.hide()}})},sendLocalUpgradeDirective:function(){w.ajax.request({
+
+--- modules/advanced/system/firmwareDeco/models.js | termo: Download ---
+ice_list,n=0;n<r.length;n++)r[n].nickname===undefined&&(r[n].nickname=r[n].custom_nickname);return r},proxy:{url:r.su.url("/admin/device?form=device_list")}}),r.su.define("firmwareDownloadProxy",{extend:"IPFProxy",url:r.su.url("/admin/cloud?form=firmware"),writeFilter:function(e){return r.extend({operation:"download"},e)}}),r.su.define("uploadFirmwareProxy",{extend:"IPFProxy",preventSuccessEvent:!0,api:{upload:{url:r.su.url("/admin/cloud?form=firmware"),writeFilter:function(e){return r.extend({operation:"upload"},e)}}}}),r.su.define
+
+--- modules/advanced/system/firmwareDeco/models.js | termo: download ---
+/device?form=device_list")}}),r.su.define("firmwareDownloadProxy",{extend:"IPFProxy",url:r.su.url("/admin/cloud?form=firmware"),writeFilter:function(e){return r.extend({operation:"download"},e)}}),r.su.define("uploadFirmwareProxy",{extend:"IPFProxy",preventSuccessEvent:!0,api:{upload:{url:r.su.url("/admin/cloud?form=firmware"),writeFilter:function(e){return r.extend({operation:"upload"},e)}}}}),r.su.define("checkDownloadStatusProxy",{extend:"IPFProxy",url:r.su.url("/admin/cloud?form=firmware_status"),preventSuccessEvent:!0,preventFa
+
+--- modules/advanced/system/firmwareDeco/models.js | termo: upload ---
+r.su.define("firmwareDownloadProxy",{extend:"IPFProxy",url:r.su.url("/admin/cloud?form=firmware"),writeFilter:function(e){return r.extend({operation:"download"},e)}}),r.su.define("uploadFirmwareProxy",{extend:"IPFProxy",preventSuccessEvent:!0,api:{upload:{url:r.su.url("/admin/cloud?form=firmware"),writeFilter:function(e){return r.extend({operation:"upload"},e)}}}}),r.su.define("checkDownloadStatusProxy",{extend:"IPFProxy",url:r.su.url("/admin/cloud?form=firmware_status"),preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent
+
+--- modules/advanced/system/firmwareDeco/models.js | termo: upload ---
+"/admin/cloud?form=firmware"),writeFilter:function(e){return r.extend({operation:"download"},e)}}),r.su.define("uploadFirmwareProxy",{extend:"IPFProxy",preventSuccessEvent:!0,api:{upload:{url:r.su.url("/admin/cloud?form=firmware"),writeFilter:function(e){return r.extend({operation:"upload"},e)}}}}),r.su.define("checkDownloadStatusProxy",{extend:"IPFProxy",url:r.su.url("/admin/cloud?form=firmware_status"),preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,writeFilter:function(e){return r.extend({operation:"read"},e)}})
+
+--- modules/advanced/system/firmwareDeco/models.js | termo: upload ---
+.define("uploadFirmwareProxy",{extend:"IPFProxy",preventSuccessEvent:!0,api:{upload:{url:r.su.url("/admin/cloud?form=firmware"),writeFilter:function(e){return r.extend({operation:"upload"},e)}}}}),r.su.define("checkDownloadStatusProxy",{extend:"IPFProxy",url:r.su.url("/admin/cloud?form=firmware_status"),preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,writeFilter:function(e){return r.extend({operation:"read"},e)}}),r.su.define("checkUpgradeStatusProxy",{extend:"IPFProxy",url:r.su.url("/admin/cloud?form=firmware_stat
+
+--- modules/advanced/system/firmwareDeco/models.js | termo: Download ---
+nd:"IPFProxy",preventSuccessEvent:!0,api:{upload:{url:r.su.url("/admin/cloud?form=firmware"),writeFilter:function(e){return r.extend({operation:"upload"},e)}}}}),r.su.define("checkDownloadStatusProxy",{extend:"IPFProxy",url:r.su.url("/admin/cloud?form=firmware_status"),preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,writeFilter:function(e){return r.extend({operation:"read"},e)}}),r.su.define("checkUpgradeStatusProxy",{extend:"IPFProxy",url:r.su.url("/admin/cloud?form=firmware_status"),preventSuccessEvent:!0,preventFa
+
+--- modules/advanced/system/firmwareDeco/view.html | termo: UPLOAD ---
+"msg" type="window" class="global-alert loading-msg" data-bind="{firmwareChecking}" close-btn="{false}"><div widget="paragraph" data-bind="{firmwareCheckingTitle}" text="{FIRMWARE.UPLOADING}"></div></div><div widget="msg" type="confirm" id="firmware-upgrade-msg" msg-view="firmwareView" data-bind="{confirmUpgrade}" class="global-confirm" yes-text="{FIRMWARE.UPGRADE}" no-text="{FIRMWARE.CANCEL}" msg="{FIRMWARE.UPGRADE_REBOOT_TIP}"></div><div widget="msg" type="window" msg-view="firmwareView" data-bind="{progressbarWrap}" class="glob
+
+--- modules/advanced/system/firmwareIsp/controllers.js | termo: upload ---
+ew.progressbarWrap.show(),r.firmwareIspView.proBar.animate({duration:1e4,percentageStart:0,percentageEnd:100,callback:function(){r.firmwareIspView.progressbarWrap.hide()}}),n.ajax.upload({proxy:"uploadFirmwareIspProxy",fileId:"manual-upgrade-file",timeout:1e4,preventSuccessEvent:!0,success:function(e){switch(r.firmwareIspView.progressbarWrap.hide(),e.upgrade_result){case"success":s.main.alert(t.su.CHAR.FIRMWARE.UPGRADE_SUCCESS),a.firmwareTypeIspM.load();break;case"error_isp_newest":s.main.showError(t.su.CHAR.FIRMWARE.FIRMWARE_NEWE
+
+--- modules/advanced/system/firmwareIsp/controllers.js | termo: upload ---
+rap.show(),r.firmwareIspView.proBar.animate({duration:1e4,percentageStart:0,percentageEnd:100,callback:function(){r.firmwareIspView.progressbarWrap.hide()}}),n.ajax.upload({proxy:"uploadFirmwareIspProxy",fileId:"manual-upgrade-file",timeout:1e4,preventSuccessEvent:!0,success:function(e){switch(r.firmwareIspView.progressbarWrap.hide(),e.upgrade_result){case"success":s.main.alert(t.su.CHAR.FIRMWARE.UPGRADE_SUCCESS),a.firmwareTypeIspM.load();break;case"error_isp_newest":s.main.showError(t.su.CHAR.FIRMWARE.FIRMWARE_NEWEST);break;case"
+
+--- modules/advanced/system/firmwareIsp/models.js | termo: upload ---
+su.url("/admin/isp?form=isp_upgrade"),preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,writeFilter:function(e){return r.extend({operation:"read"},e)}}),r.su.define("uploadFirmwareIspProxy",{extend:"IPFProxy",api:{upload:{preventSuccessEvent:!0,url:r.su.url("/admin/isp?form=isp_upgrade"),writeFilter:function(e){return r.extend({operation:"upgrade"},e)}}}})}(jQuery);
+
+--- modules/advanced/system/firmwareIsp/models.js | termo: upload ---
+cessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,writeFilter:function(e){return r.extend({operation:"read"},e)}}),r.su.define("uploadFirmwareIspProxy",{extend:"IPFProxy",api:{upload:{preventSuccessEvent:!0,url:r.su.url("/admin/isp?form=isp_upgrade"),writeFilter:function(e){return r.extend({operation:"upgrade"},e)}}}})}(jQuery);
+
+--- modules/advanced/system/sysLog/controllers.js | termo: Total ---
+age:0,getSyslogPage:function(n){g.sysLogStore.load({data:{index:n,limit:100},success:function(e,o){var t=g.sysLogStore.getPlugin("informationPaging");s.currentPage=n,t.show(),t.setTotalPage(e.totalNum,{currentPage:e.currentIndex,currentPageSize:100})}})},saveLog:function(){a.ajax.upload({proxy:"saveLogProxy",fileId:"save-log-file"})},filterLog:function(e){o.sysLogModel.submit({preventSuccessEvent:!0,success:function(){s.getSyslogPage(0)}})},onTimeChange:function(e,o){var t=a.time.getHour24(),n=a.time.format(o,null,t);i.sysLogView
+
+--- modules/advanced/system/sysLog/controllers.js | termo: total ---
+logPage:function(n){g.sysLogStore.load({data:{index:n,limit:100},success:function(e,o){var t=g.sysLogStore.getPlugin("informationPaging");s.currentPage=n,t.show(),t.setTotalPage(e.totalNum,{currentPage:e.currentIndex,currentPageSize:100})}})},saveLog:function(){a.ajax.upload({proxy:"saveLogProxy",fileId:"save-log-file"})},filterLog:function(e){o.sysLogModel.submit({preventSuccessEvent:!0,success:function(){s.getSyslogPage(0)}})},onTimeChange:function(e,o){var t=a.time.getHour24(),n=a.time.format(o,null,t);i.sysLogView.currentTime
+
+--- modules/advanced/system/sysLog/controllers.js | termo: upload ---
+r t=g.sysLogStore.getPlugin("informationPaging");s.currentPage=n,t.show(),t.setTotalPage(e.totalNum,{currentPage:e.currentIndex,currentPageSize:100})}})},saveLog:function(){a.ajax.upload({proxy:"saveLogProxy",fileId:"save-log-file"})},filterLog:function(e){o.sysLogModel.submit({preventSuccessEvent:!0,success:function(){s.getSyslogPage(0)}})},onTimeChange:function(e,o){var t=a.time.getHour24(),n=a.time.format(o,null,t);i.sysLogView.currentTime.setValue(n)},beforeDestroy:function(){a.time.off("on_time_change",s.onTimeChange)}}})}(jQ
+
+--- modules/advanced/system/sysLog/models.js | termo: upload ---
+roxy",{extend:"IPFProxy",url:o.su.url("/admin/syslog?form=log"),writeFilter:function(e){return o.extend({operation:"mail"},e)}}),o.su.define("saveLogProxy",{extend:"IPFProxy",api:{upload:{url:o.su.url("/admin/log_export?form=save_log"),data:{operation:"save"}}}}),o.su.define("timeServiceProxy",{extend:"IPFProxy",url:o.su.url("/admin/device?form=timesetting"),preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,readFilter:function(e){return(e=e.result).hour24Enable="off",e}})}(jQuery);
+
+--- modules/advanced/system/sysParams/controllers.js | termo: tx ---
+jQuery.su.moduleManager.define("sysParams",{services:["ajax","device","moduleManager"],models:["wanUnicastM","wifiNetworkM","wifiNetworkStandbyModel","txPowerM","flowControlModel","igmpFeatureM","fastXmitModel","flowCtrlModel"],stores:["txPowerS"],views:["sysParamsView"],listeners:{ev_on_launch:function(e,o,i,t,s,n,w){var a=w.device.getCurrentMode(),l=w.device.getSupportedConfigs();"RE"!==a.workMode&&(t.wanUnicastM.load(),t.wanUnicastM.enable_unicast.show(),t.txPowerM.load(),l.igmp.supported&&(t.ig
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+jQuery.su.moduleManager.define("sysParams",{services:["ajax","device","moduleManager"],models:["wanUnicastM","wifiNetworkM","wifiNetworkStandbyModel","txPowerM","flowControlModel","igmpFeatureM","fastXmitModel","flowCtrlModel"],stores:["txPowerS"],views:["sysParamsView"],listeners:{ev_on_launch:function(e,o,i,t,s,n,w){var a=w.device.getCurrentMode(),l=w.device.getSupportedConfigs();"RE"!==a.workMode&&(t.wanUnicastM.load(),t.wanUnicastM.enable_unicast.show(),t.txPowerM.load(),l.igmp.supported&&(t.igmpFeatureM.lo
+
+--- modules/advanced/system/sysParams/controllers.js | termo: tX ---
+ager.define("sysParams",{services:["ajax","device","moduleManager"],models:["wanUnicastM","wifiNetworkM","wifiNetworkStandbyModel","txPowerM","flowControlModel","igmpFeatureM","fastXmitModel","flowCtrlModel"],stores:["txPowerS"],views:["sysParamsView"],listeners:{ev_on_launch:function(e,o,i,t,s,n,w){var a=w.device.getCurrentMode(),l=w.device.getSupportedConfigs();"RE"!==a.workMode&&(t.wanUnicastM.load(),t.wanUnicastM.enable_unicast.show(),t.txPowerM.load(),l.igmp.supported&&(t.igmpFeatureM.load(),t.igmpFeatureM.enabled.show())
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+sysParams",{services:["ajax","device","moduleManager"],models:["wanUnicastM","wifiNetworkM","wifiNetworkStandbyModel","txPowerM","flowControlModel","igmpFeatureM","fastXmitModel","flowCtrlModel"],stores:["txPowerS"],views:["sysParamsView"],listeners:{ev_on_launch:function(e,o,i,t,s,n,w){var a=w.device.getCurrentMode(),l=w.device.getSupportedConfigs();"RE"!==a.workMode&&(t.wanUnicastM.load(),t.wanUnicastM.enable_unicast.show(),t.txPowerM.load(),l.igmp.supported&&(t.igmpFeatureM.load(),t.igmpFeatureM.enabled.show())),l.wifiNetwork
+
+--- modules/advanced/system/sysParams/controllers.js | termo: tx ---
+ax","device","moduleManager"],models:["wanUnicastM","wifiNetworkM","wifiNetworkStandbyModel","txPowerM","flowControlModel","igmpFeatureM","fastXmitModel","flowCtrlModel"],stores:["txPowerS"],views:["sysParamsView"],listeners:{ev_on_launch:function(e,o,i,t,s,n,w){var a=w.device.getCurrentMode(),l=w.device.getSupportedConfigs();"RE"!==a.workMode&&(t.wanUnicastM.load(),t.wanUnicastM.enable_unicast.show(),t.txPowerM.load(),l.igmp.supported&&(t.igmpFeatureM.load(),t.igmpFeatureM.enabled.show())),l.wifiNetwork.supported&&(t.wifiNetw
+
+--- modules/advanced/system/sysParams/controllers.js | termo: tx ---
+v_on_launch:function(e,o,i,t,s,n,w){var a=w.device.getCurrentMode(),l=w.device.getSupportedConfigs();"RE"!==a.workMode&&(t.wanUnicastM.load(),t.wanUnicastM.enable_unicast.show(),t.txPowerM.load(),l.igmp.supported&&(t.igmpFeatureM.load(),t.igmpFeatureM.enabled.show())),l.wifiNetwork.supported&&(t.wifiNetworkM.load(),t.wifiNetworkM.enable_wifiNetwork.show()),l.wifiNetworkStandby.supported&&(t.wifiNetworkStandbyModel.load(),t.wifiNetworkStandbyModel.enabled2g.show(),t.wifiNetworkStandbyModel.enabled5g.show(),t.wifiNetworkStandbyM
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+del.enabled6g.show()),l.wifiNetwork6GStandby.supported||t.wifiNetworkStandbyModel.enabled6g.hide(),l.wifiNetworkDSLStandby.supported&&t.wifiNetworkStandbyModel.enabledDSL.show(),l.flowControl.supported&&(t.flowControlModel.load(),t.flowControlModel.enabled.show()),l.flowCtrlPage.supported?(t.flowCtrlModel.load(),t.flowControlModel.enabled.disable(),t.flowControlModel.enabled.setIconDom('<span id="go-to-flowControl" class="menu-link-button"></span>')):(t.flowControlModel.enabled.enable(),t.flowControlModel.enabled.hideIconDom()),
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+fiNetwork6GStandby.supported||t.wifiNetworkStandbyModel.enabled6g.hide(),l.wifiNetworkDSLStandby.supported&&t.wifiNetworkStandbyModel.enabledDSL.show(),l.flowControl.supported&&(t.flowControlModel.load(),t.flowControlModel.enabled.show()),l.flowCtrlPage.supported?(t.flowCtrlModel.load(),t.flowControlModel.enabled.disable(),t.flowControlModel.enabled.setIconDom('<span id="go-to-flowControl" class="menu-link-button"></span>')):(t.flowControlModel.enabled.enable(),t.flowControlModel.enabled.hideIconDom()),"AP"==a.sysMode&&(t.flowCt
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+ed||t.wifiNetworkStandbyModel.enabled6g.hide(),l.wifiNetworkDSLStandby.supported&&t.wifiNetworkStandbyModel.enabledDSL.show(),l.flowControl.supported&&(t.flowControlModel.load(),t.flowControlModel.enabled.show()),l.flowCtrlPage.supported?(t.flowCtrlModel.load(),t.flowControlModel.enabled.disable(),t.flowControlModel.enabled.setIconDom('<span id="go-to-flowControl" class="menu-link-button"></span>')):(t.flowControlModel.enabled.enable(),t.flowControlModel.enabled.hideIconDom()),"AP"==a.sysMode&&(t.flowCtrlModel.wan_tx_enable.hide
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+ed6g.hide(),l.wifiNetworkDSLStandby.supported&&t.wifiNetworkStandbyModel.enabledDSL.show(),l.flowControl.supported&&(t.flowControlModel.load(),t.flowControlModel.enabled.show()),l.flowCtrlPage.supported?(t.flowCtrlModel.load(),t.flowControlModel.enabled.disable(),t.flowControlModel.enabled.setIconDom('<span id="go-to-flowControl" class="menu-link-button"></span>')):(t.flowControlModel.enabled.enable(),t.flowControlModel.enabled.hideIconDom()),"AP"==a.sysMode&&(t.flowCtrlModel.wan_tx_enable.hide(),t.flowCtrlModel.wan_rx_enable.hi
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+SLStandby.supported&&t.wifiNetworkStandbyModel.enabledDSL.show(),l.flowControl.supported&&(t.flowControlModel.load(),t.flowControlModel.enabled.show()),l.flowCtrlPage.supported?(t.flowCtrlModel.load(),t.flowControlModel.enabled.disable(),t.flowControlModel.enabled.setIconDom('<span id="go-to-flowControl" class="menu-link-button"></span>')):(t.flowControlModel.enabled.enable(),t.flowControlModel.enabled.hideIconDom()),"AP"==a.sysMode&&(t.flowCtrlModel.wan_tx_enable.hide(),t.flowCtrlModel.wan_rx_enable.hide()),l.fastXmit.supported
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+wifiNetworkStandbyModel.enabledDSL.show(),l.flowControl.supported&&(t.flowControlModel.load(),t.flowControlModel.enabled.show()),l.flowCtrlPage.supported?(t.flowCtrlModel.load(),t.flowControlModel.enabled.disable(),t.flowControlModel.enabled.setIconDom('<span id="go-to-flowControl" class="menu-link-button"></span>')):(t.flowControlModel.enabled.enable(),t.flowControlModel.enabled.hideIconDom()),"AP"==a.sysMode&&(t.flowCtrlModel.wan_tx_enable.hide(),t.flowCtrlModel.wan_rx_enable.hide()),l.fastXmit.supported&&(t.fastXmitModel.load
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+ow(),l.flowControl.supported&&(t.flowControlModel.load(),t.flowControlModel.enabled.show()),l.flowCtrlPage.supported?(t.flowCtrlModel.load(),t.flowControlModel.enabled.disable(),t.flowControlModel.enabled.setIconDom('<span id="go-to-flowControl" class="menu-link-button"></span>')):(t.flowControlModel.enabled.enable(),t.flowControlModel.enabled.hideIconDom()),"AP"==a.sysMode&&(t.flowCtrlModel.wan_tx_enable.hide(),t.flowCtrlModel.wan_rx_enable.hide()),l.fastXmit.supported&&(t.fastXmitModel.load(),t.fastXmitModel.enable.show())}},i
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+d(),t.flowControlModel.enabled.show()),l.flowCtrlPage.supported?(t.flowCtrlModel.load(),t.flowControlModel.enabled.disable(),t.flowControlModel.enabled.setIconDom('<span id="go-to-flowControl" class="menu-link-button"></span>')):(t.flowControlModel.enabled.enable(),t.flowControlModel.enabled.hideIconDom()),"AP"==a.sysMode&&(t.flowCtrlModel.wan_tx_enable.hide(),t.flowCtrlModel.wan_rx_enable.hide()),l.fastXmit.supported&&(t.fastXmitModel.load(),t.fastXmitModel.enable.show())}},init:function(i,t,s,e,o,n){this.listen({"models.wanUni
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+e.supported?(t.flowCtrlModel.load(),t.flowControlModel.enabled.disable(),t.flowControlModel.enabled.setIconDom('<span id="go-to-flowControl" class="menu-link-button"></span>')):(t.flowControlModel.enabled.enable(),t.flowControlModel.enabled.hideIconDom()),"AP"==a.sysMode&&(t.flowCtrlModel.wan_tx_enable.hide(),t.flowCtrlModel.wan_rx_enable.hide()),l.fastXmit.supported&&(t.fastXmitModel.load(),t.fastXmitModel.enable.show())}},init:function(i,t,s,e,o,n){this.listen({"models.wanUnicastM.is_dhcp":{ev_value_change:function(e,o){!o&&s.
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+t.flowControlModel.enabled.disable(),t.flowControlModel.enabled.setIconDom('<span id="go-to-flowControl" class="menu-link-button"></span>')):(t.flowControlModel.enabled.enable(),t.flowControlModel.enabled.hideIconDom()),"AP"==a.sysMode&&(t.flowCtrlModel.wan_tx_enable.hide(),t.flowCtrlModel.wan_rx_enable.hide()),l.fastXmit.supported&&(t.fastXmitModel.load(),t.fastXmitModel.enable.show())}},init:function(i,t,s,e,o,n){this.listen({"models.wanUnicastM.is_dhcp":{ev_value_change:function(e,o){!o&&s.wanUnicastM.enable_unicast.disable()
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+led.setIconDom('<span id="go-to-flowControl" class="menu-link-button"></span>')):(t.flowControlModel.enabled.enable(),t.flowControlModel.enabled.hideIconDom()),"AP"==a.sysMode&&(t.flowCtrlModel.wan_tx_enable.hide(),t.flowCtrlModel.wan_rx_enable.hide()),l.fastXmit.supported&&(t.fastXmitModel.load(),t.fastXmitModel.enable.show())}},init:function(i,t,s,e,o,n){this.listen({"models.wanUnicastM.is_dhcp":{ev_value_change:function(e,o){!o&&s.wanUnicastM.enable_unicast.disable()}},"models.txPowerM":{ev_loaded:function(){var e,o=s.txPower
+
+--- modules/advanced/system/sysParams/controllers.js | termo: tx ---
+pan id="go-to-flowControl" class="menu-link-button"></span>')):(t.flowControlModel.enabled.enable(),t.flowControlModel.enabled.hideIconDom()),"AP"==a.sysMode&&(t.flowCtrlModel.wan_tx_enable.hide(),t.flowCtrlModel.wan_rx_enable.hide()),l.fastXmit.supported&&(t.fastXmitModel.load(),t.fastXmitModel.enable.show())}},init:function(i,t,s,e,o,n){this.listen({"models.wanUnicastM.is_dhcp":{ev_value_change:function(e,o){!o&&s.wanUnicastM.enable_unicast.disable()}},"models.txPowerM":{ev_loaded:function(){var e,o=s.txPowerM.getData();if(i
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+ontrol" class="menu-link-button"></span>')):(t.flowControlModel.enabled.enable(),t.flowControlModel.enabled.hideIconDom()),"AP"==a.sysMode&&(t.flowCtrlModel.wan_tx_enable.hide(),t.flowCtrlModel.wan_rx_enable.hide()),l.fastXmit.supported&&(t.fastXmitModel.load(),t.fastXmitModel.enable.show())}},init:function(i,t,s,e,o,n){this.listen({"models.wanUnicastM.is_dhcp":{ev_value_change:function(e,o){!o&&s.wanUnicastM.enable_unicast.disable()}},"models.txPowerM":{ev_loaded:function(){var e,o=s.txPowerM.getData();if(i.supportDfs=o.support
+
+--- modules/advanced/system/sysParams/controllers.js | termo: rx ---
+u-link-button"></span>')):(t.flowControlModel.enabled.enable(),t.flowControlModel.enabled.hideIconDom()),"AP"==a.sysMode&&(t.flowCtrlModel.wan_tx_enable.hide(),t.flowCtrlModel.wan_rx_enable.hide()),l.fastXmit.supported&&(t.fastXmitModel.load(),t.fastXmitModel.enable.show())}},init:function(i,t,s,e,o,n){this.listen({"models.wanUnicastM.is_dhcp":{ev_value_change:function(e,o){!o&&s.wanUnicastM.enable_unicast.disable()}},"models.txPowerM":{ev_loaded:function(){var e,o=s.txPowerM.getData();if(i.supportDfs=o.support_dfs,i.supportDf
+
+--- modules/advanced/system/sysParams/controllers.js | termo: tX ---
+)):(t.flowControlModel.enabled.enable(),t.flowControlModel.enabled.hideIconDom()),"AP"==a.sysMode&&(t.flowCtrlModel.wan_tx_enable.hide(),t.flowCtrlModel.wan_rx_enable.hide()),l.fastXmit.supported&&(t.fastXmitModel.load(),t.fastXmitModel.enable.show())}},init:function(i,t,s,e,o,n){this.listen({"models.wanUnicastM.is_dhcp":{ev_value_change:function(e,o){!o&&s.wanUnicastM.enable_unicast.disable()}},"models.txPowerM":{ev_loaded:function(){var e,o=s.txPowerM.getData();if(i.supportDfs=o.support_dfs,i.supportDfs)for(e in t.sysParamsV
+
+--- modules/advanced/system/sysParams/controllers.js | termo: tX ---
+enabled.enable(),t.flowControlModel.enabled.hideIconDom()),"AP"==a.sysMode&&(t.flowCtrlModel.wan_tx_enable.hide(),t.flowCtrlModel.wan_rx_enable.hide()),l.fastXmit.supported&&(t.fastXmitModel.load(),t.fastXmitModel.enable.show())}},init:function(i,t,s,e,o,n){this.listen({"models.wanUnicastM.is_dhcp":{ev_value_change:function(e,o){!o&&s.wanUnicastM.enable_unicast.disable()}},"models.txPowerM":{ev_loaded:function(){var e,o=s.txPowerM.getData();if(i.supportDfs=o.support_dfs,i.supportDfs)for(e in t.sysParamsView.wifiCoverage.show()
+
+--- modules/advanced/system/sysParams/controllers.js | termo: tX ---
+ControlModel.enabled.hideIconDom()),"AP"==a.sysMode&&(t.flowCtrlModel.wan_tx_enable.hide(),t.flowCtrlModel.wan_rx_enable.hide()),l.fastXmit.supported&&(t.fastXmitModel.load(),t.fastXmitModel.enable.show())}},init:function(i,t,s,e,o,n){this.listen({"models.wanUnicastM.is_dhcp":{ev_value_change:function(e,o){!o&&s.wanUnicastM.enable_unicast.disable()}},"models.txPowerM":{ev_loaded:function(){var e,o=s.txPowerM.getData();if(i.supportDfs=o.support_dfs,i.supportDfs)for(e in t.sysParamsView.wifiCoverage.show(),o)o[e],o[e]||(s.txPowe
+
+--- modules/advanced/system/sysParams/controllers.js | termo: tx ---
+XmitModel.enable.show())}},init:function(i,t,s,e,o,n){this.listen({"models.wanUnicastM.is_dhcp":{ev_value_change:function(e,o){!o&&s.wanUnicastM.enable_unicast.disable()}},"models.txPowerM":{ev_loaded:function(){var e,o=s.txPowerM.getData();if(i.supportDfs=o.support_dfs,i.supportDfs)for(e in t.sysParamsView.wifiCoverage.show(),o)o[e],o[e]||(s.txPowerM[e].hide(),s.txPowerM[e].disable());else t.sysParamsView.wifiCoverage.hide()}}}),this.control({"#wifi-network-checkbox":{ev_view_change:function(e,o){o.value||t.sysParamsView.wifi
+
+--- modules/advanced/system/sysParams/controllers.js | termo: tx ---
+,t,s,e,o,n){this.listen({"models.wanUnicastM.is_dhcp":{ev_value_change:function(e,o){!o&&s.wanUnicastM.enable_unicast.disable()}},"models.txPowerM":{ev_loaded:function(){var e,o=s.txPowerM.getData();if(i.supportDfs=o.support_dfs,i.supportDfs)for(e in t.sysParamsView.wifiCoverage.show(),o)o[e],o[e]||(s.txPowerM[e].hide(),s.txPowerM[e].disable());else t.sysParamsView.wifiCoverage.hide()}}}),this.control({"#wifi-network-checkbox":{ev_view_change:function(e,o){o.value||t.sysParamsView.wifiNetworkMsg.show()}},"#wifi-network-2g-chec
+
+--- modules/advanced/system/sysParams/controllers.js | termo: tx ---
+le()}},"models.txPowerM":{ev_loaded:function(){var e,o=s.txPowerM.getData();if(i.supportDfs=o.support_dfs,i.supportDfs)for(e in t.sysParamsView.wifiCoverage.show(),o)o[e],o[e]||(s.txPowerM[e].hide(),s.txPowerM[e].disable());else t.sysParamsView.wifiCoverage.hide()}}}),this.control({"#wifi-network-checkbox":{ev_view_change:function(e,o){o.value||t.sysParamsView.wifiNetworkMsg.show()}},"#wifi-network-2g-checkbox":{ev_view_change:function(e,o){o.value||t.sysParamsView.wifiNetwork2gMsg.show()}},"#wifi-network-5g-checkbox":{ev_view
+
+--- modules/advanced/system/sysParams/controllers.js | termo: tx ---
+rM":{ev_loaded:function(){var e,o=s.txPowerM.getData();if(i.supportDfs=o.support_dfs,i.supportDfs)for(e in t.sysParamsView.wifiCoverage.show(),o)o[e],o[e]||(s.txPowerM[e].hide(),s.txPowerM[e].disable());else t.sysParamsView.wifiCoverage.hide()}}}),this.control({"#wifi-network-checkbox":{ev_view_change:function(e,o){o.value||t.sysParamsView.wifiNetworkMsg.show()}},"#wifi-network-2g-checkbox":{ev_view_change:function(e,o){o.value||t.sysParamsView.wifiNetwork2gMsg.show()}},"#wifi-network-5g-checkbox":{ev_view_change:function(e,o)
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+e:function(e,o){o.value||t.sysParamsView.wifiNetwork6gMsg.show()}},"#wifi-network-dsl-checkbox":{ev_view_change:function(e,o){o.value||t.sysParamsView.wifiNetworkDSLMsg.show()}},"#flow-control-checkbox":{ev_view_change:function(){t.sysParamsView.flowControlMsg.show()}},"#disable-wifi-network-continue-btn":{ev_button_click:function(){t.sysParamsView.wifiNetworkMsg.hide()}},"#disable-wifi-network-cancel-btn":{ev_button_click:function(){s.wifiNetworkM.enable_wifiNetwork.setValue(!0),t.sysParamsView.wifiNetworkMsg.hide()}},"#disable
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+,"#wifi-network-dsl-checkbox":{ev_view_change:function(e,o){o.value||t.sysParamsView.wifiNetworkDSLMsg.show()}},"#flow-control-checkbox":{ev_view_change:function(){t.sysParamsView.flowControlMsg.show()}},"#disable-wifi-network-continue-btn":{ev_button_click:function(){t.sysParamsView.wifiNetworkMsg.hide()}},"#disable-wifi-network-cancel-btn":{ev_button_click:function(){s.wifiNetworkM.enable_wifiNetwork.setValue(!0),t.sysParamsView.wifiNetworkMsg.hide()}},"#disable-wifi-network-2g-continue-btn":{ev_button_click:function(){t.sysPa
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+rkDSLMsg.hide()}},"#disable-wifi-network-dsl-cancel-btn":{ev_button_click:function(){s.wifiNetworkStandbyModel.enabledDSL.setValue(!0),t.sysParamsView.wifiNetworkDSLMsg.hide()}},"#flow-control-continue-btn":{ev_button_click:function(){t.sysParamsView.flowControlMsg.hide()}},"#flow-control-cancel-btn":{ev_button_click:function(){var e=s.flowControlModel.enabled;e.setValue(!e.getValue()),t.sysParamsView.flowControlMsg.hide()}},"#go-to-flowControl":{click:function(){t.sysParamsView.sysParamsPanel.hide(),t.sysParamsView.wifiCoverage
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+ck:function(){s.wifiNetworkStandbyModel.enabledDSL.setValue(!0),t.sysParamsView.wifiNetworkDSLMsg.hide()}},"#flow-control-continue-btn":{ev_button_click:function(){t.sysParamsView.flowControlMsg.hide()}},"#flow-control-cancel-btn":{ev_button_click:function(){var e=s.flowControlModel.enabled;e.setValue(!e.getValue()),t.sysParamsView.flowControlMsg.hide()}},"#go-to-flowControl":{click:function(){t.sysParamsView.sysParamsPanel.hide(),t.sysParamsView.wifiCoverage.hide(),t.sysParamsView.flowControlPanel.show(),s.wanUnicastM.reset(),s
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+kStandbyModel.enabledDSL.setValue(!0),t.sysParamsView.wifiNetworkDSLMsg.hide()}},"#flow-control-continue-btn":{ev_button_click:function(){t.sysParamsView.flowControlMsg.hide()}},"#flow-control-cancel-btn":{ev_button_click:function(){var e=s.flowControlModel.enabled;e.setValue(!e.getValue()),t.sysParamsView.flowControlMsg.hide()}},"#go-to-flowControl":{click:function(){t.sysParamsView.sysParamsPanel.hide(),t.sysParamsView.wifiCoverage.hide(),t.sysParamsView.flowControlPanel.show(),s.wanUnicastM.reset(),s.wifiNetworkM.reset(),s.wi
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+workDSLMsg.hide()}},"#flow-control-continue-btn":{ev_button_click:function(){t.sysParamsView.flowControlMsg.hide()}},"#flow-control-cancel-btn":{ev_button_click:function(){var e=s.flowControlModel.enabled;e.setValue(!e.getValue()),t.sysParamsView.flowControlMsg.hide()}},"#go-to-flowControl":{click:function(){t.sysParamsView.sysParamsPanel.hide(),t.sysParamsView.wifiCoverage.hide(),t.sysParamsView.flowControlPanel.show(),s.wanUnicastM.reset(),s.wifiNetworkM.reset(),s.wifiNetworkStandbyModel.reset(),s.txPowerM.reset(),s.igmpFeatur
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+unction(){t.sysParamsView.flowControlMsg.hide()}},"#flow-control-cancel-btn":{ev_button_click:function(){var e=s.flowControlModel.enabled;e.setValue(!e.getValue()),t.sysParamsView.flowControlMsg.hide()}},"#go-to-flowControl":{click:function(){t.sysParamsView.sysParamsPanel.hide(),t.sysParamsView.wifiCoverage.hide(),t.sysParamsView.flowControlPanel.show(),s.wanUnicastM.reset(),s.wifiNetworkM.reset(),s.wifiNetworkStandbyModel.reset(),s.txPowerM.reset(),s.igmpFeatureM.reset(),s.fastXmitModel.reset()}},"#flow-control-back-btn":{clic
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+ntrolMsg.hide()}},"#flow-control-cancel-btn":{ev_button_click:function(){var e=s.flowControlModel.enabled;e.setValue(!e.getValue()),t.sysParamsView.flowControlMsg.hide()}},"#go-to-flowControl":{click:function(){t.sysParamsView.sysParamsPanel.hide(),t.sysParamsView.wifiCoverage.hide(),t.sysParamsView.flowControlPanel.show(),s.wanUnicastM.reset(),s.wifiNetworkM.reset(),s.wifiNetworkStandbyModel.reset(),s.txPowerM.reset(),s.igmpFeatureM.reset(),s.fastXmitModel.reset()}},"#flow-control-back-btn":{click:function(){t.sysParamsView.sys
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+etValue()),t.sysParamsView.flowControlMsg.hide()}},"#go-to-flowControl":{click:function(){t.sysParamsView.sysParamsPanel.hide(),t.sysParamsView.wifiCoverage.hide(),t.sysParamsView.flowControlPanel.show(),s.wanUnicastM.reset(),s.wifiNetworkM.reset(),s.wifiNetworkStandbyModel.reset(),s.txPowerM.reset(),s.igmpFeatureM.reset(),s.fastXmitModel.reset()}},"#flow-control-back-btn":{click:function(){t.sysParamsView.sysParamsPanel.show(),t.sysParamsView.flowControlPanel.hide(),s.flowCtrlModel.reset(),s.flowControlModel.load(),!i.supportDf
+
+--- modules/advanced/system/sysParams/controllers.js | termo: tx ---
+.sysParamsPanel.hide(),t.sysParamsView.wifiCoverage.hide(),t.sysParamsView.flowControlPanel.show(),s.wanUnicastM.reset(),s.wifiNetworkM.reset(),s.wifiNetworkStandbyModel.reset(),s.txPowerM.reset(),s.igmpFeatureM.reset(),s.fastXmitModel.reset()}},"#flow-control-back-btn":{click:function(){t.sysParamsView.sysParamsPanel.show(),t.sysParamsView.flowControlPanel.hide(),s.flowCtrlModel.reset(),s.flowControlModel.load(),!i.supportDfs||t.sysParamsView.wifiCoverage.show()}},".index-common-save-btn":{ev_will_auto_save:function(e,o){o.pr
+
+--- modules/advanced/system/sysParams/controllers.js | termo: tX ---
+verage.hide(),t.sysParamsView.flowControlPanel.show(),s.wanUnicastM.reset(),s.wifiNetworkM.reset(),s.wifiNetworkStandbyModel.reset(),s.txPowerM.reset(),s.igmpFeatureM.reset(),s.fastXmitModel.reset()}},"#flow-control-back-btn":{click:function(){t.sysParamsView.sysParamsPanel.show(),t.sysParamsView.flowControlPanel.hide(),s.flowCtrlModel.reset(),s.flowControlModel.load(),!i.supportDfs||t.sysParamsView.wifiCoverage.show()}},".index-common-save-btn":{ev_will_auto_save:function(e,o){o.preventDefault(),s.igmpFeatureM.isDirty()&&s.ig
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+msView.flowControlPanel.show(),s.wanUnicastM.reset(),s.wifiNetworkM.reset(),s.wifiNetworkStandbyModel.reset(),s.txPowerM.reset(),s.igmpFeatureM.reset(),s.fastXmitModel.reset()}},"#flow-control-back-btn":{click:function(){t.sysParamsView.sysParamsPanel.show(),t.sysParamsView.flowControlPanel.hide(),s.flowCtrlModel.reset(),s.flowControlModel.load(),!i.supportDfs||t.sysParamsView.wifiCoverage.show()}},".index-common-save-btn":{ev_will_auto_save:function(e,o){o.preventDefault(),s.igmpFeatureM.isDirty()&&s.igmpFeatureM.submit(),s.wan
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+yModel.reset(),s.txPowerM.reset(),s.igmpFeatureM.reset(),s.fastXmitModel.reset()}},"#flow-control-back-btn":{click:function(){t.sysParamsView.sysParamsPanel.show(),t.sysParamsView.flowControlPanel.hide(),s.flowCtrlModel.reset(),s.flowControlModel.load(),!i.supportDfs||t.sysParamsView.wifiCoverage.show()}},".index-common-save-btn":{ev_will_auto_save:function(e,o){o.preventDefault(),s.igmpFeatureM.isDirty()&&s.igmpFeatureM.submit(),s.wanUnicastM.isDirty()&&s.wanUnicastM.submit(),s.txPowerM.isDirty()&&s.txPowerM.submit(),s.wifiNetw
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+reset(),s.igmpFeatureM.reset(),s.fastXmitModel.reset()}},"#flow-control-back-btn":{click:function(){t.sysParamsView.sysParamsPanel.show(),t.sysParamsView.flowControlPanel.hide(),s.flowCtrlModel.reset(),s.flowControlModel.load(),!i.supportDfs||t.sysParamsView.wifiCoverage.show()}},".index-common-save-btn":{ev_will_auto_save:function(e,o){o.preventDefault(),s.igmpFeatureM.isDirty()&&s.igmpFeatureM.submit(),s.wanUnicastM.isDirty()&&s.wanUnicastM.submit(),s.txPowerM.isDirty()&&s.txPowerM.submit(),s.wifiNetworkM.isDirty()&&s.wifiNetw
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+eset(),s.fastXmitModel.reset()}},"#flow-control-back-btn":{click:function(){t.sysParamsView.sysParamsPanel.show(),t.sysParamsView.flowControlPanel.hide(),s.flowCtrlModel.reset(),s.flowControlModel.load(),!i.supportDfs||t.sysParamsView.wifiCoverage.show()}},".index-common-save-btn":{ev_will_auto_save:function(e,o){o.preventDefault(),s.igmpFeatureM.isDirty()&&s.igmpFeatureM.submit(),s.wanUnicastM.isDirty()&&s.wanUnicastM.submit(),s.txPowerM.isDirty()&&s.txPowerM.submit(),s.wifiNetworkM.isDirty()&&s.wifiNetworkM.submit(),s.wifiNetw
+
+--- modules/advanced/system/sysParams/controllers.js | termo: tx ---
+}},".index-common-save-btn":{ev_will_auto_save:function(e,o){o.preventDefault(),s.igmpFeatureM.isDirty()&&s.igmpFeatureM.submit(),s.wanUnicastM.isDirty()&&s.wanUnicastM.submit(),s.txPowerM.isDirty()&&s.txPowerM.submit(),s.wifiNetworkM.isDirty()&&s.wifiNetworkM.submit(),s.wifiNetworkStandbyModel.isDirty()&&s.wifiNetworkStandbyModel.submit(),s.flowControlModel.isDirty()&&s.flowControlModel.submit(),s.fastXmitModel.isDirty()&&s.fastXmitModel.submit(),s.flowCtrlModel.isDirty()&&s.flowCtrlModel.submit()}}})}},function(e,o,i,t,s,n){
+
+--- modules/advanced/system/sysParams/controllers.js | termo: tx ---
+-btn":{ev_will_auto_save:function(e,o){o.preventDefault(),s.igmpFeatureM.isDirty()&&s.igmpFeatureM.submit(),s.wanUnicastM.isDirty()&&s.wanUnicastM.submit(),s.txPowerM.isDirty()&&s.txPowerM.submit(),s.wifiNetworkM.isDirty()&&s.wifiNetworkM.submit(),s.wifiNetworkStandbyModel.isDirty()&&s.wifiNetworkStandbyModel.submit(),s.flowControlModel.isDirty()&&s.flowControlModel.submit(),s.fastXmitModel.isDirty()&&s.fastXmitModel.submit(),s.flowCtrlModel.isDirty()&&s.flowCtrlModel.submit()}}})}},function(e,o,i,t,s,n){return{supportDfs:!1}}
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+astM.submit(),s.txPowerM.isDirty()&&s.txPowerM.submit(),s.wifiNetworkM.isDirty()&&s.wifiNetworkM.submit(),s.wifiNetworkStandbyModel.isDirty()&&s.wifiNetworkStandbyModel.submit(),s.flowControlModel.isDirty()&&s.flowControlModel.submit(),s.fastXmitModel.isDirty()&&s.fastXmitModel.submit(),s.flowCtrlModel.isDirty()&&s.flowCtrlModel.submit()}}})}},function(e,o,i,t,s,n){return{supportDfs:!1}});
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+ty()&&s.txPowerM.submit(),s.wifiNetworkM.isDirty()&&s.wifiNetworkM.submit(),s.wifiNetworkStandbyModel.isDirty()&&s.wifiNetworkStandbyModel.submit(),s.flowControlModel.isDirty()&&s.flowControlModel.submit(),s.fastXmitModel.isDirty()&&s.fastXmitModel.submit(),s.flowCtrlModel.isDirty()&&s.flowCtrlModel.submit()}}})}},function(e,o,i,t,s,n){return{supportDfs:!1}});
+
+--- modules/advanced/system/sysParams/controllers.js | termo: tX ---
+iNetworkM.isDirty()&&s.wifiNetworkM.submit(),s.wifiNetworkStandbyModel.isDirty()&&s.wifiNetworkStandbyModel.submit(),s.flowControlModel.isDirty()&&s.flowControlModel.submit(),s.fastXmitModel.isDirty()&&s.fastXmitModel.submit(),s.flowCtrlModel.isDirty()&&s.flowCtrlModel.submit()}}})}},function(e,o,i,t,s,n){return{supportDfs:!1}});
+
+--- modules/advanced/system/sysParams/controllers.js | termo: tX ---
+NetworkM.submit(),s.wifiNetworkStandbyModel.isDirty()&&s.wifiNetworkStandbyModel.submit(),s.flowControlModel.isDirty()&&s.flowControlModel.submit(),s.fastXmitModel.isDirty()&&s.fastXmitModel.submit(),s.flowCtrlModel.isDirty()&&s.flowCtrlModel.submit()}}})}},function(e,o,i,t,s,n){return{supportDfs:!1}});
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+fiNetworkStandbyModel.isDirty()&&s.wifiNetworkStandbyModel.submit(),s.flowControlModel.isDirty()&&s.flowControlModel.submit(),s.fastXmitModel.isDirty()&&s.fastXmitModel.submit(),s.flowCtrlModel.isDirty()&&s.flowCtrlModel.submit()}}})}},function(e,o,i,t,s,n){return{supportDfs:!1}});
+
+--- modules/advanced/system/sysParams/controllers.js | termo: flow ---
+ty()&&s.wifiNetworkStandbyModel.submit(),s.flowControlModel.isDirty()&&s.flowControlModel.submit(),s.fastXmitModel.isDirty()&&s.fastXmitModel.submit(),s.flowCtrlModel.isDirty()&&s.flowCtrlModel.submit()}}})}},function(e,o,i,t,s,n){return{supportDfs:!1}});
+
+--- modules/advanced/system/sysParams/models.js | termo: flow ---
+g:"enable_5g"},{name:"enabled6g",mapping:"enable_6g"},{name:"enabledDSL",mapping:"enable_dsl"}],proxy:{url:e.su.url("/admin/network?form=erp_setting")}}),e.su.modelManager.define("flowControlModel",{type:"model",fields:[{name:"enabled",mapping:"enable_flow_control"}],proxy:{url:e.su.url("/admin/network?form=flow_control")}}),e.su.modelManager.define("txPowerM",{fields:[{name:"band2_4"},{name:"band5_1"},{name:"band5_2"},{name:"support_dfs"}],serialize:function(e){return delete e.support_dfs,e},proxy:{url:e.su.url("/admin/wireless
+
+--- modules/advanced/system/sysParams/models.js | termo: flow ---
+,mapping:"enable_dsl"}],proxy:{url:e.su.url("/admin/network?form=erp_setting")}}),e.su.modelManager.define("flowControlModel",{type:"model",fields:[{name:"enabled",mapping:"enable_flow_control"}],proxy:{url:e.su.url("/admin/network?form=flow_control")}}),e.su.modelManager.define("txPowerM",{fields:[{name:"band2_4"},{name:"band5_1"},{name:"band5_2"},{name:"support_dfs"}],serialize:function(e){return delete e.support_dfs,e},proxy:{url:e.su.url("/admin/wireless?form=power")}}),e.su.storeManager.define("txPowerS",{fields:[{name:"nam
+
+--- modules/advanced/system/sysParams/models.js | termo: flow ---
+rk?form=erp_setting")}}),e.su.modelManager.define("flowControlModel",{type:"model",fields:[{name:"enabled",mapping:"enable_flow_control"}],proxy:{url:e.su.url("/admin/network?form=flow_control")}}),e.su.modelManager.define("txPowerM",{fields:[{name:"band2_4"},{name:"band5_1"},{name:"band5_2"},{name:"support_dfs"}],serialize:function(e){return delete e.support_dfs,e},proxy:{url:e.su.url("/admin/wireless?form=power")}}),e.su.storeManager.define("txPowerS",{fields:[{name:"name"},{name:"value"}],data:[{name:e.su.CHAR.WIFI_POWER.LOW,
+
+--- modules/advanced/system/sysParams/models.js | termo: tx ---
+efine("flowControlModel",{type:"model",fields:[{name:"enabled",mapping:"enable_flow_control"}],proxy:{url:e.su.url("/admin/network?form=flow_control")}}),e.su.modelManager.define("txPowerM",{fields:[{name:"band2_4"},{name:"band5_1"},{name:"band5_2"},{name:"support_dfs"}],serialize:function(e){return delete e.support_dfs,e},proxy:{url:e.su.url("/admin/wireless?form=power")}}),e.su.storeManager.define("txPowerS",{fields:[{name:"name"},{name:"value"}],data:[{name:e.su.CHAR.WIFI_POWER.LOW,value:"low"},{name:e.su.CHAR.WIFI_POWER.MI
+
+--- modules/advanced/system/sysParams/models.js | termo: tx ---
+and5_1"},{name:"band5_2"},{name:"support_dfs"}],serialize:function(e){return delete e.support_dfs,e},proxy:{url:e.su.url("/admin/wireless?form=power")}}),e.su.storeManager.define("txPowerS",{fields:[{name:"name"},{name:"value"}],data:[{name:e.su.CHAR.WIFI_POWER.LOW,value:"low"},{name:e.su.CHAR.WIFI_POWER.MIDDLE,value:"middle"},{name:e.su.CHAR.WIFI_POWER.HIGH,value:"high"}]}),e.su.modelManager.define("fastXmitModel",{type:"model",fields:[{name:"enable"}],proxy:{url:e.su.url("/admin/network?form=fast_xmit_setting")}}),e.su.model
+
+--- modules/advanced/system/sysParams/models.js | termo: tX ---
+],data:[{name:e.su.CHAR.WIFI_POWER.LOW,value:"low"},{name:e.su.CHAR.WIFI_POWER.MIDDLE,value:"middle"},{name:e.su.CHAR.WIFI_POWER.HIGH,value:"high"}]}),e.su.modelManager.define("fastXmitModel",{type:"model",fields:[{name:"enable"}],proxy:{url:e.su.url("/admin/network?form=fast_xmit_setting")}}),e.su.modelManager.define("flowCtrlModel",{fields:[{name:"wan_rx_enable"},{name:"wan_tx_enable"},{name:"lan_tx_enable"},{name:"lan_rx_enable"}],convert:function(e){return e},proxy:{url:e.su.url("/admin/network?form=flow_control_lan_wan")}
+
+--- modules/advanced/system/sysParams/models.js | termo: flow ---
+high"}]}),e.su.modelManager.define("fastXmitModel",{type:"model",fields:[{name:"enable"}],proxy:{url:e.su.url("/admin/network?form=fast_xmit_setting")}}),e.su.modelManager.define("flowCtrlModel",{fields:[{name:"wan_rx_enable"},{name:"wan_tx_enable"},{name:"lan_tx_enable"},{name:"lan_rx_enable"}],convert:function(e){return e},proxy:{url:e.su.url("/admin/network?form=flow_control_lan_wan")}})}(jQuery);
+
+--- modules/advanced/system/sysParams/models.js | termo: rx ---
+"fastXmitModel",{type:"model",fields:[{name:"enable"}],proxy:{url:e.su.url("/admin/network?form=fast_xmit_setting")}}),e.su.modelManager.define("flowCtrlModel",{fields:[{name:"wan_rx_enable"},{name:"wan_tx_enable"},{name:"lan_tx_enable"},{name:"lan_rx_enable"}],convert:function(e){return e},proxy:{url:e.su.url("/admin/network?form=flow_control_lan_wan")}})}(jQuery);
+
+--- modules/advanced/system/sysParams/models.js | termo: tx ---
+model",fields:[{name:"enable"}],proxy:{url:e.su.url("/admin/network?form=fast_xmit_setting")}}),e.su.modelManager.define("flowCtrlModel",{fields:[{name:"wan_rx_enable"},{name:"wan_tx_enable"},{name:"lan_tx_enable"},{name:"lan_rx_enable"}],convert:function(e){return e},proxy:{url:e.su.url("/admin/network?form=flow_control_lan_wan")}})}(jQuery);
+
+--- modules/advanced/system/sysParams/models.js | termo: tx ---
+nable"}],proxy:{url:e.su.url("/admin/network?form=fast_xmit_setting")}}),e.su.modelManager.define("flowCtrlModel",{fields:[{name:"wan_rx_enable"},{name:"wan_tx_enable"},{name:"lan_tx_enable"},{name:"lan_rx_enable"}],convert:function(e){return e},proxy:{url:e.su.url("/admin/network?form=flow_control_lan_wan")}})}(jQuery);
+
+--- modules/advanced/system/sysParams/models.js | termo: rx ---
+u.url("/admin/network?form=fast_xmit_setting")}}),e.su.modelManager.define("flowCtrlModel",{fields:[{name:"wan_rx_enable"},{name:"wan_tx_enable"},{name:"lan_tx_enable"},{name:"lan_rx_enable"}],convert:function(e){return e},proxy:{url:e.su.url("/admin/network?form=flow_control_lan_wan")}})}(jQuery);
+
+--- modules/advanced/system/sysParams/models.js | termo: flow ---
+Model",{fields:[{name:"wan_rx_enable"},{name:"wan_tx_enable"},{name:"lan_tx_enable"},{name:"lan_rx_enable"}],convert:function(e){return e},proxy:{url:e.su.url("/admin/network?form=flow_control_lan_wan")}})}(jQuery);
+
+--- modules/advanced/system/sysParams/view.html | termo: flow ---
+bind="{wifiNetworkStandbyModel.enabledDSL}" label-field="{SYS_PARAMS.WIFI_NETWORK_DSL}" box-label="{OPERATION.ENABLE}"></div><div widget="checkbox" class="hidden inline-block" id="flow-control-checkbox" data-bind="{flowControlModel.enabled}" label-field="{SYS_PARAMS.FLOW_CONTROL}" box-label="{OPERATION.ENABLE}" customize-icon="true"></div><div widget="checkbox" class="hidden" id="fast-xmit-checkbox" data-bind="{fastXmitModel.enable}" label-field="{SYS_PARAMS.WIRELESS_FORWARD}" box-label="{OPERATION.ENABLE}"></div></div><div widg
+
+--- modules/advanced/system/sysParams/view.html | termo: flow ---
+ledDSL}" label-field="{SYS_PARAMS.WIFI_NETWORK_DSL}" box-label="{OPERATION.ENABLE}"></div><div widget="checkbox" class="hidden inline-block" id="flow-control-checkbox" data-bind="{flowControlModel.enabled}" label-field="{SYS_PARAMS.FLOW_CONTROL}" box-label="{OPERATION.ENABLE}" customize-icon="true"></div><div widget="checkbox" class="hidden" id="fast-xmit-checkbox" data-bind="{fastXmitModel.enable}" label-field="{SYS_PARAMS.WIRELESS_FORWARD}" box-label="{OPERATION.ENABLE}"></div></div><div widget="panel" data-bind="{wifiCoverage
+
+--- modules/advanced/system/sysParams/view.html | termo: FLOW ---
+ box-label="{OPERATION.ENABLE}"></div><div widget="checkbox" class="hidden inline-block" id="flow-control-checkbox" data-bind="{flowControlModel.enabled}" label-field="{SYS_PARAMS.FLOW_CONTROL}" box-label="{OPERATION.ENABLE}" customize-icon="true"></div><div widget="checkbox" class="hidden" id="fast-xmit-checkbox" data-bind="{fastXmitModel.enable}" label-field="{SYS_PARAMS.WIRELESS_FORWARD}" box-label="{OPERATION.ENABLE}"></div></div><div widget="panel" data-bind="{wifiCoverage}" class="hidden" title-label="{MENU_ITEMS_NAME.WIFI
+
+--- modules/advanced/system/sysParams/view.html | termo: tX ---
+d}" label-field="{SYS_PARAMS.FLOW_CONTROL}" box-label="{OPERATION.ENABLE}" customize-icon="true"></div><div widget="checkbox" class="hidden" id="fast-xmit-checkbox" data-bind="{fastXmitModel.enable}" label-field="{SYS_PARAMS.WIRELESS_FORWARD}" box-label="{OPERATION.ENABLE}"></div></div><div widget="panel" data-bind="{wifiCoverage}" class="hidden" title-label="{MENU_ITEMS_NAME.WIFI_POWER}" instruction=""><div widget="combobox" label-field="{WIFI_POWER.24_GHZ}" data-bind="{txPowerM.band2_4}" data-options="{txPowerS}"></div><div 
+
+--- modules/advanced/system/sysParams/view.html | termo: tx ---
+et="panel" data-bind="{wifiCoverage}" class="hidden" title-label="{MENU_ITEMS_NAME.WIFI_POWER}" instruction=""><div widget="combobox" label-field="{WIFI_POWER.24_GHZ}" data-bind="{txPowerM.band2_4}" data-options="{txPowerS}"></div><div widget="combobox" label-field="{WIFI_POWER.5G1_GHZ}" data-bind="{txPowerM.band5_1}" data-options="{txPowerS}"></div><div widget="combobox" label-field="{WIFI_POWER.5G2_GHZ}" data-bind="{txPowerM.band5_2}" data-options="{txPowerS}"></div></div><div widget="panel" title-label="{FLOW_CONTROL.FLOW_C
+
+--- modules/advanced/system/sysParams/view.html | termo: tx ---
+e}" class="hidden" title-label="{MENU_ITEMS_NAME.WIFI_POWER}" instruction=""><div widget="combobox" label-field="{WIFI_POWER.24_GHZ}" data-bind="{txPowerM.band2_4}" data-options="{txPowerS}"></div><div widget="combobox" label-field="{WIFI_POWER.5G1_GHZ}" data-bind="{txPowerM.band5_1}" data-options="{txPowerS}"></div><div widget="combobox" label-field="{WIFI_POWER.5G2_GHZ}" data-bind="{txPowerM.band5_2}" data-options="{txPowerS}"></div></div><div widget="panel" title-label="{FLOW_CONTROL.FLOW_CONTROL}" instruction="{FLOW_CONTRO
+
+--- modules/advanced/system/sysParams/view.html | termo: tx ---
+t="combobox" label-field="{WIFI_POWER.24_GHZ}" data-bind="{txPowerM.band2_4}" data-options="{txPowerS}"></div><div widget="combobox" label-field="{WIFI_POWER.5G1_GHZ}" data-bind="{txPowerM.band5_1}" data-options="{txPowerS}"></div><div widget="combobox" label-field="{WIFI_POWER.5G2_GHZ}" data-bind="{txPowerM.band5_2}" data-options="{txPowerS}"></div></div><div widget="panel" title-label="{FLOW_CONTROL.FLOW_CONTROL}" instruction="{FLOW_CONTROL.INSTRUCTION}" collapsible="{false}" class="hidden flow-control-panel" data-bind="{flo
+
+--- modules/advanced/system/sysParams/view.html | termo: tx ---
+WER.24_GHZ}" data-bind="{txPowerM.band2_4}" data-options="{txPowerS}"></div><div widget="combobox" label-field="{WIFI_POWER.5G1_GHZ}" data-bind="{txPowerM.band5_1}" data-options="{txPowerS}"></div><div widget="combobox" label-field="{WIFI_POWER.5G2_GHZ}" data-bind="{txPowerM.band5_2}" data-options="{txPowerS}"></div></div><div widget="panel" title-label="{FLOW_CONTROL.FLOW_CONTROL}" instruction="{FLOW_CONTROL.INSTRUCTION}" collapsible="{false}" class="hidden flow-control-panel" data-bind="{flowControlPanel}"><div widget="simpl
+
+--- modules/advanced/system/sysParams/view.html | termo: tx ---
+="combobox" label-field="{WIFI_POWER.5G1_GHZ}" data-bind="{txPowerM.band5_1}" data-options="{txPowerS}"></div><div widget="combobox" label-field="{WIFI_POWER.5G2_GHZ}" data-bind="{txPowerM.band5_2}" data-options="{txPowerS}"></div></div><div widget="panel" title-label="{FLOW_CONTROL.FLOW_CONTROL}" instruction="{FLOW_CONTROL.INSTRUCTION}" collapsible="{false}" class="hidden flow-control-panel" data-bind="{flowControlPanel}"><div widget="simpleDom" data-bind="{backBtn}" id="flow-control-back-btn"></div><div><div widget="checkbox
+
+--- modules/advanced/system/sysParams/view.html | termo: tx ---
+ER.5G1_GHZ}" data-bind="{txPowerM.band5_1}" data-options="{txPowerS}"></div><div widget="combobox" label-field="{WIFI_POWER.5G2_GHZ}" data-bind="{txPowerM.band5_2}" data-options="{txPowerS}"></div></div><div widget="panel" title-label="{FLOW_CONTROL.FLOW_CONTROL}" instruction="{FLOW_CONTROL.INSTRUCTION}" collapsible="{false}" class="hidden flow-control-panel" data-bind="{flowControlPanel}"><div widget="simpleDom" data-bind="{backBtn}" id="flow-control-back-btn"></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.WAN}"
+
+--- modules/advanced/system/sysParams/view.html | termo: FLOW ---
+"{txPowerS}"></div><div widget="combobox" label-field="{WIFI_POWER.5G2_GHZ}" data-bind="{txPowerM.band5_2}" data-options="{txPowerS}"></div></div><div widget="panel" title-label="{FLOW_CONTROL.FLOW_CONTROL}" instruction="{FLOW_CONTROL.INSTRUCTION}" collapsible="{false}" class="hidden flow-control-panel" data-bind="{flowControlPanel}"><div widget="simpleDom" data-bind="{backBtn}" id="flow-control-back-btn"></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.WAN}" data-bind="{flowCtrlModel.wan_tx_enable}" box-label="{FLOW
+
+--- modules/advanced/system/sysParams/view.html | termo: FLOW ---
+</div><div widget="combobox" label-field="{WIFI_POWER.5G2_GHZ}" data-bind="{txPowerM.band5_2}" data-options="{txPowerS}"></div></div><div widget="panel" title-label="{FLOW_CONTROL.FLOW_CONTROL}" instruction="{FLOW_CONTROL.INSTRUCTION}" collapsible="{false}" class="hidden flow-control-panel" data-bind="{flowControlPanel}"><div widget="simpleDom" data-bind="{backBtn}" id="flow-control-back-btn"></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.WAN}" data-bind="{flowCtrlModel.wan_tx_enable}" box-label="{FLOW_CONTROL.TX}"
+
+--- modules/advanced/system/sysParams/view.html | termo: FLOW ---
+label-field="{WIFI_POWER.5G2_GHZ}" data-bind="{txPowerM.band5_2}" data-options="{txPowerS}"></div></div><div widget="panel" title-label="{FLOW_CONTROL.FLOW_CONTROL}" instruction="{FLOW_CONTROL.INSTRUCTION}" collapsible="{false}" class="hidden flow-control-panel" data-bind="{flowControlPanel}"><div widget="simpleDom" data-bind="{backBtn}" id="flow-control-back-btn"></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.WAN}" data-bind="{flowCtrlModel.wan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-con
+
+--- modules/advanced/system/sysParams/view.html | termo: flow ---
+}" data-options="{txPowerS}"></div></div><div widget="panel" title-label="{FLOW_CONTROL.FLOW_CONTROL}" instruction="{FLOW_CONTROL.INSTRUCTION}" collapsible="{false}" class="hidden flow-control-panel" data-bind="{flowControlPanel}"><div widget="simpleDom" data-bind="{backBtn}" id="flow-control-back-btn"></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.WAN}" data-bind="{flowCtrlModel.wan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.WAN_TIP}"></div><div widget="
+
+--- modules/advanced/system/sysParams/view.html | termo: flow ---
+iv></div><div widget="panel" title-label="{FLOW_CONTROL.FLOW_CONTROL}" instruction="{FLOW_CONTROL.INSTRUCTION}" collapsible="{false}" class="hidden flow-control-panel" data-bind="{flowControlPanel}"><div widget="simpleDom" data-bind="{backBtn}" id="flow-control-back-btn"></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.WAN}" data-bind="{flowCtrlModel.wan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.WAN_TIP}"></div><div widget="checkbox" label-field="{false}" 
+
+--- modules/advanced/system/sysParams/view.html | termo: flow ---
+" instruction="{FLOW_CONTROL.INSTRUCTION}" collapsible="{false}" class="hidden flow-control-panel" data-bind="{flowControlPanel}"><div widget="simpleDom" data-bind="{backBtn}" id="flow-control-back-btn"></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.WAN}" data-bind="{flowCtrlModel.wan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.WAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.wan_rx_enable}" box-label="{FLOW_CONTROL.RX
+
+--- modules/advanced/system/sysParams/view.html | termo: FLOW ---
+"hidden flow-control-panel" data-bind="{flowControlPanel}"><div widget="simpleDom" data-bind="{backBtn}" id="flow-control-back-btn"></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.WAN}" data-bind="{flowCtrlModel.wan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.WAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.wan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div><div><div widget="chec
+
+--- modules/advanced/system/sysParams/view.html | termo: flow ---
+a-bind="{flowControlPanel}"><div widget="simpleDom" data-bind="{backBtn}" id="flow-control-back-btn"></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.WAN}" data-bind="{flowCtrlModel.wan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.WAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.wan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div><div><div widget="checkbox" label-field="{FLOW_CONTRO
+
+--- modules/advanced/system/sysParams/view.html | termo: tx ---
+olPanel}"><div widget="simpleDom" data-bind="{backBtn}" id="flow-control-back-btn"></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.WAN}" data-bind="{flowCtrlModel.wan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.WAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.wan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.LAN}" data-bin
+
+--- modules/advanced/system/sysParams/view.html | termo: FLOW ---
+impleDom" data-bind="{backBtn}" id="flow-control-back-btn"></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.WAN}" data-bind="{flowCtrlModel.wan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.WAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.wan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.LAN}" data-bind="{flowCtrlModel.lan_tx_e
+
+--- modules/advanced/system/sysParams/view.html | termo: TX ---
+a-bind="{backBtn}" id="flow-control-back-btn"></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.WAN}" data-bind="{flowCtrlModel.wan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.WAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.wan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.LAN}" data-bind="{flowCtrlModel.lan_tx_enable}" box
+
+--- modules/advanced/system/sysParams/view.html | termo: flow ---
+ow-control-back-btn"></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.WAN}" data-bind="{flowCtrlModel.wan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.WAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.wan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.LAN}" data-bind="{flowCtrlModel.lan_tx_enable}" box-label="{FLOW_CONTROL.TX}" 
+
+--- modules/advanced/system/sysParams/view.html | termo: FLOW ---
+iv><div widget="checkbox" label-field="{FLOW_CONTROL.WAN}" data-bind="{flowCtrlModel.wan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.WAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.wan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.LAN}" data-bind="{flowCtrlModel.lan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-cont
+
+--- modules/advanced/system/sysParams/view.html | termo: flow ---
+an_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.WAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.wan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.LAN}" data-bind="{flowCtrlModel.lan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.LAN_TIP}"></div><div widget="checkbox" label-field="{
+
+--- modules/advanced/system/sysParams/view.html | termo: rx ---
+-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.WAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.wan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.LAN}" data-bind="{flowCtrlModel.lan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.LAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bin
+
+--- modules/advanced/system/sysParams/view.html | termo: FLOW ---
+}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.WAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.wan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.LAN}" data-bind="{flowCtrlModel.lan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.LAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.lan_rx_e
+
+--- modules/advanced/system/sysParams/view.html | termo: RX ---
+ine-block flow-control-chk" tip-text="{FLOW_CONTROL.WAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.wan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.LAN}" data-bind="{flowCtrlModel.lan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.LAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.lan_rx_enable}" box
+
+--- modules/advanced/system/sysParams/view.html | termo: flow ---
+k" tip-text="{FLOW_CONTROL.WAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.wan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.LAN}" data-bind="{flowCtrlModel.lan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.LAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.lan_rx_enable}" box-label="{FLOW_CONTROL.RX}" 
+
+--- modules/advanced/system/sysParams/view.html | termo: rx ---
+t="{FLOW_CONTROL.WAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.wan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.LAN}" data-bind="{flowCtrlModel.lan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.LAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.lan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="i
+
+--- modules/advanced/system/sysParams/view.html | termo: FLOW ---
+bel-field="{false}" data-bind="{flowCtrlModel.wan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.LAN}" data-bind="{flowCtrlModel.lan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.LAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.lan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div></div><div widget="msg
+
+--- modules/advanced/system/sysParams/view.html | termo: flow ---
+{flowCtrlModel.wan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.LAN}" data-bind="{flowCtrlModel.lan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.LAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.lan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div></div><div widget="msg" type="window" msg-title="{SYS
+
+--- modules/advanced/system/sysParams/view.html | termo: tx ---
+_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.LAN}" data-bind="{flowCtrlModel.lan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.LAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.lan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div></div><div widget="msg" type="window" msg-title="{SYS_PARAMS.WIFI_NET
+
+--- modules/advanced/system/sysParams/view.html | termo: FLOW ---
+{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.LAN}" data-bind="{flowCtrlModel.lan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.LAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.lan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div></div><div widget="msg" type="window" msg-title="{SYS_PARAMS.WIFI_NETWORK}" close-btn="{false}"
+
+--- modules/advanced/system/sysParams/view.html | termo: TX ---
+.RX}" class="inline-block flow-ctrl-rx"></div></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.LAN}" data-bind="{flowCtrlModel.lan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.LAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.lan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div></div><div widget="msg" type="window" msg-title="{SYS_PARAMS.WIFI_NETWORK}" close-btn="{false}" data-bind=
+
+--- modules/advanced/system/sysParams/view.html | termo: flow ---
+ flow-ctrl-rx"></div></div><div><div widget="checkbox" label-field="{FLOW_CONTROL.LAN}" data-bind="{flowCtrlModel.lan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.LAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.lan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div></div><div widget="msg" type="window" msg-title="{SYS_PARAMS.WIFI_NETWORK}" close-btn="{false}" data-bind="{wifiNetworkMsg}"><div wid
+
+--- modules/advanced/system/sysParams/view.html | termo: FLOW ---
+iv><div widget="checkbox" label-field="{FLOW_CONTROL.LAN}" data-bind="{flowCtrlModel.lan_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.LAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.lan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div></div><div widget="msg" type="window" msg-title="{SYS_PARAMS.WIFI_NETWORK}" close-btn="{false}" data-bind="{wifiNetworkMsg}"><div widget="fieldset"><div widget="p
+
+--- modules/advanced/system/sysParams/view.html | termo: flow ---
+an_tx_enable}" box-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.LAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.lan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div></div><div widget="msg" type="window" msg-title="{SYS_PARAMS.WIFI_NETWORK}" close-btn="{false}" data-bind="{wifiNetworkMsg}"><div widget="fieldset"><div widget="paragraph" text="{SYS_PARAMS.DISABLE_WIFI_NETWORK_CONFIRM}"></div></div><div widget="fi
+
+--- modules/advanced/system/sysParams/view.html | termo: rx ---
+-label="{FLOW_CONTROL.TX}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.LAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.lan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div></div><div widget="msg" type="window" msg-title="{SYS_PARAMS.WIFI_NETWORK}" close-btn="{false}" data-bind="{wifiNetworkMsg}"><div widget="fieldset"><div widget="paragraph" text="{SYS_PARAMS.DISABLE_WIFI_NETWORK_CONFIRM}"></div></div><div widget="fieldset" class="b
+
+--- modules/advanced/system/sysParams/view.html | termo: FLOW ---
+}" class="inline-block flow-control-chk" tip-text="{FLOW_CONTROL.LAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.lan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div></div><div widget="msg" type="window" msg-title="{SYS_PARAMS.WIFI_NETWORK}" close-btn="{false}" data-bind="{wifiNetworkMsg}"><div widget="fieldset"><div widget="paragraph" text="{SYS_PARAMS.DISABLE_WIFI_NETWORK_CONFIRM}"></div></div><div widget="fieldset" class="btn-container inline-contai
+
+--- modules/advanced/system/sysParams/view.html | termo: RX ---
+ine-block flow-control-chk" tip-text="{FLOW_CONTROL.LAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.lan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div></div><div widget="msg" type="window" msg-title="{SYS_PARAMS.WIFI_NETWORK}" close-btn="{false}" data-bind="{wifiNetworkMsg}"><div widget="fieldset"><div widget="paragraph" text="{SYS_PARAMS.DISABLE_WIFI_NETWORK_CONFIRM}"></div></div><div widget="fieldset" class="btn-container inline-container"><div w
+
+--- modules/advanced/system/sysParams/view.html | termo: flow ---
+k" tip-text="{FLOW_CONTROL.LAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.lan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div></div><div widget="msg" type="window" msg-title="{SYS_PARAMS.WIFI_NETWORK}" close-btn="{false}" data-bind="{wifiNetworkMsg}"><div widget="fieldset"><div widget="paragraph" text="{SYS_PARAMS.DISABLE_WIFI_NETWORK_CONFIRM}"></div></div><div widget="fieldset" class="btn-container inline-container"><div widget="button" class="btn-c
+
+--- modules/advanced/system/sysParams/view.html | termo: rx ---
+t="{FLOW_CONTROL.LAN_TIP}"></div><div widget="checkbox" label-field="{false}" data-bind="{flowCtrlModel.lan_rx_enable}" box-label="{FLOW_CONTROL.RX}" class="inline-block flow-ctrl-rx"></div></div></div><div widget="msg" type="window" msg-title="{SYS_PARAMS.WIFI_NETWORK}" close-btn="{false}" data-bind="{wifiNetworkMsg}"><div widget="fieldset"><div widget="paragraph" text="{SYS_PARAMS.DISABLE_WIFI_NETWORK_CONFIRM}"></div></div><div widget="fieldset" class="btn-container inline-container"><div widget="button" class="btn-cancel" i
+
+--- modules/advanced/system/sysParams/view.html | termo: FLOW ---
+"btn-submit" id="disable-wifi-network-dsl-continue-btn" text="{SYS_PARAMS.CONTINUE}" label-field="{false}"></div></div></div><div widget="msg" type="window" msg-title="{SYS_PARAMS.FLOW_CONTROL}" close-btn="{false}" data-bind="{flowControlMsg}"><div widget="fieldset"><div widget="paragraph" text="{SYS_PARAMS.CHANGE_CONFIRM_TIPS}"></div></div><div widget="fieldset" class="btn-container inline-container"><div widget="button" class="btn-cancel" id="flow-control-cancel-btn" text="{OPERATION.CANCEL}" label-field="{false}"></div><div w
+
+--- modules/advanced/system/sysParams/view.html | termo: flow ---
+nue-btn" text="{SYS_PARAMS.CONTINUE}" label-field="{false}"></div></div></div><div widget="msg" type="window" msg-title="{SYS_PARAMS.FLOW_CONTROL}" close-btn="{false}" data-bind="{flowControlMsg}"><div widget="fieldset"><div widget="paragraph" text="{SYS_PARAMS.CHANGE_CONFIRM_TIPS}"></div></div><div widget="fieldset" class="btn-container inline-container"><div widget="button" class="btn-cancel" id="flow-control-cancel-btn" text="{OPERATION.CANCEL}" label-field="{false}"></div><div widget="button" class="btn-submit" id="flow-cont
+
+--- modules/advanced/system/sysParams/view.html | termo: flow ---
+iv widget="paragraph" text="{SYS_PARAMS.CHANGE_CONFIRM_TIPS}"></div></div><div widget="fieldset" class="btn-container inline-container"><div widget="button" class="btn-cancel" id="flow-control-cancel-btn" text="{OPERATION.CANCEL}" label-field="{false}"></div><div widget="button" class="btn-submit" id="flow-control-continue-btn" text="{SYS_PARAMS.CONTINUE}" label-field="{false}"></div></div></div></div>
+
+--- modules/advanced/system/sysParams/view.html | termo: flow ---
+e-container"><div widget="button" class="btn-cancel" id="flow-control-cancel-btn" text="{OPERATION.CANCEL}" label-field="{false}"></div><div widget="button" class="btn-submit" id="flow-control-continue-btn" text="{SYS_PARAMS.CONTINUE}" label-field="{false}"></div></div></div></div>
+
+--- modules/advanced/system/wifiPower/controllers.js | termo: tx ---
+jQuery.su.moduleManager.define("wifiPower",{models:["txPowerM"],stores:["txPowerS"],views:["wifiPowerView"],listeners:{ev_on_launch:function(e,o,t,i,n,r,w){i.txPowerM.load()}},init:function(e,o,t,i,n,r){this.listen({"models.txPowerM":{ev_loaded:function(){var e,o=t.txPowerM.getData();for(e in o)o[e],o[e]||(t.txPowerM[e].hide(),t.txPowerM[e].disable())}}}),this.control({})}},function(e,o,t,i,n,r){return
+
+--- modules/advanced/system/wifiPower/controllers.js | termo: tx ---
+jQuery.su.moduleManager.define("wifiPower",{models:["txPowerM"],stores:["txPowerS"],views:["wifiPowerView"],listeners:{ev_on_launch:function(e,o,t,i,n,r,w){i.txPowerM.load()}},init:function(e,o,t,i,n,r){this.listen({"models.txPowerM":{ev_loaded:function(){var e,o=t.txPowerM.getData();for(e in o)o[e],o[e]||(t.txPowerM[e].hide(),t.txPowerM[e].disable())}}}),this.control({})}},function(e,o,t,i,n,r){return{}});
+
+--- modules/advanced/system/wifiPower/controllers.js | termo: tx ---
+jQuery.su.moduleManager.define("wifiPower",{models:["txPowerM"],stores:["txPowerS"],views:["wifiPowerView"],listeners:{ev_on_launch:function(e,o,t,i,n,r,w){i.txPowerM.load()}},init:function(e,o,t,i,n,r){this.listen({"models.txPowerM":{ev_loaded:function(){var e,o=t.txPowerM.getData();for(e in o)o[e],o[e]||(t.txPowerM[e].hide(),t.txPowerM[e].disable())}}}),this.control({})}},function(e,o,t,i,n,r){return{}});
+
+--- modules/advanced/system/wifiPower/controllers.js | termo: tx ---
+models:["txPowerM"],stores:["txPowerS"],views:["wifiPowerView"],listeners:{ev_on_launch:function(e,o,t,i,n,r,w){i.txPowerM.load()}},init:function(e,o,t,i,n,r){this.listen({"models.txPowerM":{ev_loaded:function(){var e,o=t.txPowerM.getData();for(e in o)o[e],o[e]||(t.txPowerM[e].hide(),t.txPowerM[e].disable())}}}),this.control({})}},function(e,o,t,i,n,r){return{}});
+
+--- modules/advanced/system/wifiPower/controllers.js | termo: tx ---
+ews:["wifiPowerView"],listeners:{ev_on_launch:function(e,o,t,i,n,r,w){i.txPowerM.load()}},init:function(e,o,t,i,n,r){this.listen({"models.txPowerM":{ev_loaded:function(){var e,o=t.txPowerM.getData();for(e in o)o[e],o[e]||(t.txPowerM[e].hide(),t.txPowerM[e].disable())}}}),this.control({})}},function(e,o,t,i,n,r){return{}});
+
+--- modules/advanced/system/wifiPower/controllers.js | termo: tx ---
+h:function(e,o,t,i,n,r,w){i.txPowerM.load()}},init:function(e,o,t,i,n,r){this.listen({"models.txPowerM":{ev_loaded:function(){var e,o=t.txPowerM.getData();for(e in o)o[e],o[e]||(t.txPowerM[e].hide(),t.txPowerM[e].disable())}}}),this.control({})}},function(e,o,t,i,n,r){return{}});
+
+--- modules/advanced/system/wifiPower/controllers.js | termo: tx ---
+r,w){i.txPowerM.load()}},init:function(e,o,t,i,n,r){this.listen({"models.txPowerM":{ev_loaded:function(){var e,o=t.txPowerM.getData();for(e in o)o[e],o[e]||(t.txPowerM[e].hide(),t.txPowerM[e].disable())}}}),this.control({})}},function(e,o,t,i,n,r){return{}});
+
+--- modules/advanced/system/wifiPower/view.html | termo: tx ---
+<div view="{wifiPowerView}"><div widget="panel" title-label="{MENU_ITEMS_NAME.WIFI_POWER}" instruction=""><div widget="combobox" label-field="{WIFI_POWER.24_GHZ}" data-bind="{txPowerM.band2_4}" data-options="{txPowerS}"></div><div widget="combobox" label-field="{WIFI_POWER.5G1_GHZ}" data-bind="{txPowerM.band5_1}" data-options="{txPowerS}"></div><div widget="combobox" label-field="{WIFI_POWER.5G2_GHZ}" data-bind="{txPowerM.band5_2}" data-options="{txPowerS}"></div></div></div>
+
+--- modules/advanced/system/wifiPower/view.html | termo: tx ---
+div widget="panel" title-label="{MENU_ITEMS_NAME.WIFI_POWER}" instruction=""><div widget="combobox" label-field="{WIFI_POWER.24_GHZ}" data-bind="{txPowerM.band2_4}" data-options="{txPowerS}"></div><div widget="combobox" label-field="{WIFI_POWER.5G1_GHZ}" data-bind="{txPowerM.band5_1}" data-options="{txPowerS}"></div><div widget="combobox" label-field="{WIFI_POWER.5G2_GHZ}" data-bind="{txPowerM.band5_2}" data-options="{txPowerS}"></div></div></div>
+
+--- modules/advanced/system/wifiPower/view.html | termo: tx ---
+t="combobox" label-field="{WIFI_POWER.24_GHZ}" data-bind="{txPowerM.band2_4}" data-options="{txPowerS}"></div><div widget="combobox" label-field="{WIFI_POWER.5G1_GHZ}" data-bind="{txPowerM.band5_1}" data-options="{txPowerS}"></div><div widget="combobox" label-field="{WIFI_POWER.5G2_GHZ}" data-bind="{txPowerM.band5_2}" data-options="{txPowerS}"></div></div></div>
+
+--- modules/advanced/system/wifiPower/view.html | termo: tx ---
+WER.24_GHZ}" data-bind="{txPowerM.band2_4}" data-options="{txPowerS}"></div><div widget="combobox" label-field="{WIFI_POWER.5G1_GHZ}" data-bind="{txPowerM.band5_1}" data-options="{txPowerS}"></div><div widget="combobox" label-field="{WIFI_POWER.5G2_GHZ}" data-bind="{txPowerM.band5_2}" data-options="{txPowerS}"></div></div></div>
+
+--- modules/advanced/system/wifiPower/view.html | termo: tx ---
+="combobox" label-field="{WIFI_POWER.5G1_GHZ}" data-bind="{txPowerM.band5_1}" data-options="{txPowerS}"></div><div widget="combobox" label-field="{WIFI_POWER.5G2_GHZ}" data-bind="{txPowerM.band5_2}" data-options="{txPowerS}"></div></div></div>
+
+--- modules/advanced/system/wifiPower/view.html | termo: tx ---
+ER.5G1_GHZ}" data-bind="{txPowerM.band5_1}" data-options="{txPowerS}"></div><div widget="combobox" label-field="{WIFI_POWER.5G2_GHZ}" data-bind="{txPowerM.band5_2}" data-options="{txPowerS}"></div></div></div>
+
+--- modules/index/script.js | termo: flow ---
+.device.getSupportedConfigs();t.cwmp.supported||n.push(t.cwmp.menu),t.backupRestore.supported||n.push(t.backupRestore.menu),t.timeSettings.supported||n.push(t.timeSettings.menu),t.flowCtrlPage.supported||n.push(t.flowCtrlPage.menu),"RE"===i.device.getCurrentMode().workMode&&!t.wifiNetwork.supported&&!t.wifiNetworkStandby.supported&&!t.flowControl.supported&&n.push("sysParams"),n.length&&function o(e){for(var t=0;t<e.length;t++){var a=e[t];n.includes(a.name)?e.splice(t,1):a.children&&a.children.length&&o(a.children)}}(e)}}})}(jQu
+
+--- modules/index/script.js | termo: flow ---
+wmp.supported||n.push(t.cwmp.menu),t.backupRestore.supported||n.push(t.backupRestore.menu),t.timeSettings.supported||n.push(t.timeSettings.menu),t.flowCtrlPage.supported||n.push(t.flowCtrlPage.menu),"RE"===i.device.getCurrentMode().workMode&&!t.wifiNetwork.supported&&!t.wifiNetworkStandby.supported&&!t.flowControl.supported&&n.push("sysParams"),n.length&&function o(e){for(var t=0;t<e.length;t++){var a=e[t];n.includes(a.name)?e.splice(t,1):a.children&&a.children.length&&o(a.children)}}(e)}}})}(jQuery),function(s){s.su.moduleManag
+
+--- modules/index/script.js | termo: flow ---
+t.timeSettings.menu),t.flowCtrlPage.supported||n.push(t.flowCtrlPage.menu),"RE"===i.device.getCurrentMode().workMode&&!t.wifiNetwork.supported&&!t.wifiNetworkStandby.supported&&!t.flowControl.supported&&n.push("sysParams"),n.length&&function o(e){for(var t=0;t<e.length;t++){var a=e[t];n.includes(a.name)?e.splice(t,1):a.children&&a.children.length&&o(a.children)}}(e)}}})}(jQuery),function(s){s.su.moduleManager.define("search",{services:["moduleLoader","moduleManager","ajax"],stores:["searchResult"],deps:["navigatorController","in
+
+--- modules/login/initLogin/view.html | termo: DOWNLOAD ---
+="inline-block icon"></div><div widget="displaylabel" data-bind="{wifiPassword}" text="{FIRMWARE.UP_TO_DATE}" class="inline-block"></div></div><div widget="paragraph" text="{LOGIN.DOWNLOAD}" class="align-center" style="margin:20px 0;padding-top:20px;border-top:1px solid #d9d7d7"></div><img class="init-login-icon" src="./themes/default/img/init-icon-bottom.png" alt="qrCode"></div>
+
+--- modules/login/view.html | termo: UpLoad ---
+top-bar"></div></div><div class="page"><div class="page-inner"><div class="page-content-container"><div class="page-content su-grid-row"><div widget="htmlLoader" data-bind="{tpSignUpLoader}" class="module-in-main-container hidden"></div><div widget="htmlLoader" data-bind="{localPwdRecoveryLoader}" class="module-in-main-container hidden"></div><div widget="htmlLoader" data-bind="{tpCloudLoader}" class="module-in-main-container hidden"></div></div></div></div></div></div></div></div>
+
+--- modules/networkMap/mapClients/controllers.js | termo: download ---
+iv class="mac">'+n.mac+"</div>",t+='<div class="ip">'+("0.0.0.0"===n.ip||null===n.ip?"-":n.ip)+"</div>",t+="</div>"}return t}},{text:o.su.CHAR.MAP_CLIENT.REAL_TIME_RATE,dataIndex:"downloadSpeed",cls:s.isMobileBridge?"hidden":"",renderer:function(e,n){var t,i,s="",a=function(e){var n;return n=(e=parseInt(e,10))/1024<1?o.su.CHAR.MAP_CLIENT.KBPS:(e=(e/1024).toFixed(1),o.su.CHAR.MAP_CLIENT.MBPS),{speed:e,unit:n}};return"object"===o.type(n)&&(t=a(n.downloadSpeed),s+='<div class="speed-upload-container widget-container">',s+='<span class=
+
+--- modules/networkMap/mapClients/controllers.js | termo: download ---
+nction(e){var n;return n=(e=parseInt(e,10))/1024<1?o.su.CHAR.MAP_CLIENT.KBPS:(e=(e/1024).toFixed(1),o.su.CHAR.MAP_CLIENT.MBPS),{speed:e,unit:n}};return"object"===o.type(n)&&(t=a(n.downloadSpeed),s+='<div class="speed-upload-container widget-container">',s+='<span class="icon"></span>',s+='<span class="text">'+(i=a(n.uploadSpeed)).speed+"</span>",s+='<span class="unit">'+i.unit+"</span>",s+="</div>",s+='<div class="speed-download-container widget-container">',s+='<span class="icon"></span>',s+='<span class="text">'+t.speed+"</span>",
+
+--- modules/networkMap/mapClients/controllers.js | termo: upload ---
+e,10))/1024<1?o.su.CHAR.MAP_CLIENT.KBPS:(e=(e/1024).toFixed(1),o.su.CHAR.MAP_CLIENT.MBPS),{speed:e,unit:n}};return"object"===o.type(n)&&(t=a(n.downloadSpeed),s+='<div class="speed-upload-container widget-container">',s+='<span class="icon"></span>',s+='<span class="text">'+(i=a(n.uploadSpeed)).speed+"</span>",s+='<span class="unit">'+i.unit+"</span>",s+="</div>",s+='<div class="speed-download-container widget-container">',s+='<span class="icon"></span>',s+='<span class="text">'+t.speed+"</span>",s+='<span class="unit">'+t.unit+"</
+
+--- modules/networkMap/mapClients/controllers.js | termo: upload ---
+it:n}};return"object"===o.type(n)&&(t=a(n.downloadSpeed),s+='<div class="speed-upload-container widget-container">',s+='<span class="icon"></span>',s+='<span class="text">'+(i=a(n.uploadSpeed)).speed+"</span>",s+='<span class="unit">'+i.unit+"</span>",s+="</div>",s+='<div class="speed-download-container widget-container">',s+='<span class="icon"></span>',s+='<span class="text">'+t.speed+"</span>",s+='<span class="unit">'+t.unit+"</span>",s+="</div>"),s}},{text:o.su.CHAR.MAP_CLIENT.CONNECTION_DURATION,dataIndex:"connectionType",ren
+
+--- modules/networkMap/mapClients/controllers.js | termo: download ---
+tainer">',s+='<span class="icon"></span>',s+='<span class="text">'+(i=a(n.uploadSpeed)).speed+"</span>",s+='<span class="unit">'+i.unit+"</span>",s+="</div>",s+='<div class="speed-download-container widget-container">',s+='<span class="icon"></span>',s+='<span class="text">'+t.speed+"</span>",s+='<span class="unit">'+t.unit+"</span>",s+="</div>"),s}},{text:o.su.CHAR.MAP_CLIENT.CONNECTION_DURATION,dataIndex:"connectionType",renderer:function(e){switch(e){case"band2_4":return o.su.CHAR.MAP_CLIENT.WIRELESS_24G;case"band5":case"band5_2"
+
+--- modules/networkMap/mapClients/models.js | termo: download ---
+efine("connectedClientsStore",{type:"store",fields:[{name:"deviceType",mapping:"client_type"},{name:"deviceName",mapping:"name"},{name:"deviceTag"},{name:"mac"},{name:"ip"},{name:"downloadSpeed",mapping:"down_speed"},{name:"uploadSpeed",mapping:"up_speed"},{name:"remainTime"},{name:"enablePriority",mapping:"enable_priority"},{name:"enableInternet"},{name:"connectionType",mapping:"connection_type"},{name:"online"}],convert:function(e){return e.client_list},preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,proxy:"connect
+
+--- modules/networkMap/mapClients/models.js | termo: upload ---
+fields:[{name:"deviceType",mapping:"client_type"},{name:"deviceName",mapping:"name"},{name:"deviceTag"},{name:"mac"},{name:"ip"},{name:"downloadSpeed",mapping:"down_speed"},{name:"uploadSpeed",mapping:"up_speed"},{name:"remainTime"},{name:"enablePriority",mapping:"enable_priority"},{name:"enableInternet"},{name:"connectionType",mapping:"connection_type"},{name:"online"}],convert:function(e){return e.client_list},preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,proxy:"connectedClientsProxy"}),e.su.define("connectedCl
+
+--- modules/networkMap/mapInternet/view.html | termo: Usage ---
+T.NETWORK_TYPE}" data-options="{lteNetwrokTypeStore}" read-only="{true}" none-selected-text="{NETWORK_STATUS.NULL}"></div><div widget="displaylabel" data-bind="{mobileCpeModel.dataUsage}" label-field="{MAP_INTERNET.DATA}"></div></div></div></div><div widget="panel" class="networkmap-panel no-internet-connnection-panel single-column hidden" title-label="{NETWORK_MAP_NOTE.NO_INTERNET_CONNECTION}" collapsible="{false}" data-bind="{noInternetFieldset}"><div widget="paragraph" data-bind="{lteErrorNote}" label-field="{false}" text="{NE
+
+--- modules/networkMap/mapRouter/models.js | termo: Usage ---
+"/admin/network?form=ipv6"),writeFilter:function(e){return e.params||(e.params={device_mac:"default"}),e}}),r.su.modelManager.define("performanceM",{type:"model",fields:[{name:"cpuUsage",mapping:"cpu_usage"},{name:"memUsage",mapping:"mem_usage"}],convert:function(e){var n=r.extend({},e);return n.cpu_usage=parseInt(100*n.cpu_usage,10)+"%",n.mem_usage=parseInt(100*n.mem_usage,10)+"%",n},preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,proxy:{url:r.su.url("/admin/network?form=performance")}}),r.su.define("getFirmwareL
+
+--- modules/networkMap/mapRouter/models.js | termo: usage ---
+=ipv6"),writeFilter:function(e){return e.params||(e.params={device_mac:"default"}),e}}),r.su.modelManager.define("performanceM",{type:"model",fields:[{name:"cpuUsage",mapping:"cpu_usage"},{name:"memUsage",mapping:"mem_usage"}],convert:function(e){var n=r.extend({},e);return n.cpu_usage=parseInt(100*n.cpu_usage,10)+"%",n.mem_usage=parseInt(100*n.mem_usage,10)+"%",n},preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,proxy:{url:r.su.url("/admin/network?form=performance")}}),r.su.define("getFirmwareListProxy",{extend:"I
+
+--- modules/networkMap/mapRouter/models.js | termo: Usage ---
+r:function(e){return e.params||(e.params={device_mac:"default"}),e}}),r.su.modelManager.define("performanceM",{type:"model",fields:[{name:"cpuUsage",mapping:"cpu_usage"},{name:"memUsage",mapping:"mem_usage"}],convert:function(e){var n=r.extend({},e);return n.cpu_usage=parseInt(100*n.cpu_usage,10)+"%",n.mem_usage=parseInt(100*n.mem_usage,10)+"%",n},preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,proxy:{url:r.su.url("/admin/network?form=performance")}}),r.su.define("getFirmwareListProxy",{extend:"IPFProxy",url:r.su.
+
+--- modules/networkMap/mapRouter/models.js | termo: usage ---
+ e.params||(e.params={device_mac:"default"}),e}}),r.su.modelManager.define("performanceM",{type:"model",fields:[{name:"cpuUsage",mapping:"cpu_usage"},{name:"memUsage",mapping:"mem_usage"}],convert:function(e){var n=r.extend({},e);return n.cpu_usage=parseInt(100*n.cpu_usage,10)+"%",n.mem_usage=parseInt(100*n.mem_usage,10)+"%",n},preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,proxy:{url:r.su.url("/admin/network?form=performance")}}),r.su.define("getFirmwareListProxy",{extend:"IPFProxy",url:r.su.url("/admin/device?f
+
+--- modules/networkMap/mapRouter/models.js | termo: usage ---
+ager.define("performanceM",{type:"model",fields:[{name:"cpuUsage",mapping:"cpu_usage"},{name:"memUsage",mapping:"mem_usage"}],convert:function(e){var n=r.extend({},e);return n.cpu_usage=parseInt(100*n.cpu_usage,10)+"%",n.mem_usage=parseInt(100*n.mem_usage,10)+"%",n},preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,proxy:{url:r.su.url("/admin/network?form=performance")}}),r.su.define("getFirmwareListProxy",{extend:"IPFProxy",url:r.su.url("/admin/device?form=device_list"),preventSuccessEvent:!0,preventFailEvent:!0,pr
+
+--- modules/networkMap/mapRouter/models.js | termo: usage ---
+",{type:"model",fields:[{name:"cpuUsage",mapping:"cpu_usage"},{name:"memUsage",mapping:"mem_usage"}],convert:function(e){var n=r.extend({},e);return n.cpu_usage=parseInt(100*n.cpu_usage,10)+"%",n.mem_usage=parseInt(100*n.mem_usage,10)+"%",n},preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,proxy:{url:r.su.url("/admin/network?form=performance")}}),r.su.define("getFirmwareListProxy",{extend:"IPFProxy",url:r.su.url("/admin/device?form=device_list"),preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,writeF
+
+--- modules/networkMap/mapRouter/models.js | termo: usage ---
+ds:[{name:"cpuUsage",mapping:"cpu_usage"},{name:"memUsage",mapping:"mem_usage"}],convert:function(e){var n=r.extend({},e);return n.cpu_usage=parseInt(100*n.cpu_usage,10)+"%",n.mem_usage=parseInt(100*n.mem_usage,10)+"%",n},preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,proxy:{url:r.su.url("/admin/network?form=performance")}}),r.su.define("getFirmwareListProxy",{extend:"IPFProxy",url:r.su.url("/admin/device?form=device_list"),preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,writeFilter:function(e){re
+
+--- modules/networkMap/mapRouter/models.js | termo: usage ---
+ing:"cpu_usage"},{name:"memUsage",mapping:"mem_usage"}],convert:function(e){var n=r.extend({},e);return n.cpu_usage=parseInt(100*n.cpu_usage,10)+"%",n.mem_usage=parseInt(100*n.mem_usage,10)+"%",n},preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,proxy:{url:r.su.url("/admin/network?form=performance")}}),r.su.define("getFirmwareListProxy",{extend:"IPFProxy",url:r.su.url("/admin/device?form=device_list"),preventSuccessEvent:!0,preventFailEvent:!0,preventErrorEvent:!0,writeFilter:function(e){return r.extend({operation:
+
+--- modules/networkMap/mapRouter/view.html | termo: Usage ---
+e-block">{NETWORK_MAP.CPU_LOAD}</div></div><div class="networkmap-panel-progressbar-wrap show-percentage"><div widget="progressbar" class="label-empty" data-bind="{performanceM.cpuUsage}" show-percentage="{true}"></div></div></div><div class="networkmap-panel-column memory-container"><div class="memory-before"><div widget="transition" class="inline-block memory-before-title">{NETWORK_MAP.MEMORY_USAGE}</div></div><div class="networkmap-panel-progressbar-wrap show-percentage"><div widget="progressbar" class="label-empty" data-bind=
+
+--- modules/networkMap/mapRouter/view.html | termo: USAGE ---
+></div></div><div class="networkmap-panel-column memory-container"><div class="memory-before"><div widget="transition" class="inline-block memory-before-title">{NETWORK_MAP.MEMORY_USAGE}</div></div><div class="networkmap-panel-progressbar-wrap show-percentage"><div widget="progressbar" class="label-empty" data-bind="{performanceM.memUsage}" show-percentage="{true}"></div></div></div></div></div></div>
+
+--- modules/networkMap/mapRouter/view.html | termo: Usage ---
+tle">{NETWORK_MAP.MEMORY_USAGE}</div></div><div class="networkmap-panel-progressbar-wrap show-percentage"><div widget="progressbar" class="label-empty" data-bind="{performanceM.memUsage}" show-percentage="{true}"></div></div></div></div></div></div>

@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "network-monitor"
+version = "1.4.0"
+description = "Local network monitoring for TP-Link Deco and future collectors"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "fastapi>=0.115,<1",
+  "uvicorn[standard]>=0.34,<1",
+  "httpx>=0.28,<1",
+  "python-dotenv>=1.0,<2",
+  "pycryptodome>=3.21,<4",
+  "pydantic>=2.10,<3",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0,<9", "ruff>=0.11,<1"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+network_monitor = [
+    "web/static/*",
+    "web/templates/*",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

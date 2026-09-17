@@ -1,0 +1,1 @@
+jQuery.su.moduleManager.define("cwmp",{models:["cwmpModel"],views:["cwmpView"],listeners:{ev_on_launch:function(e,n,l,c,o,i,a){c.cwmpModel.load()}},init:function(e,n,l,c,o,i){this.listen({"models.cwmpModel.cwmp_enable":{ev_value_change:function(e,n){n?l.cwmpModel.STUNEnable.enable():l.cwmpModel.STUNEnable.disable()}}})}},function(e,n,l,c,o,i){return{}});

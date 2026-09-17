@@ -1,0 +1,88 @@
+{
+  "main": {
+    "controller": "./modules/main/main.js",
+    "view": "./modules/main/main.html"
+  },
+  "utils": {
+    "controller": "./modules/utils/controllers.js"
+  },
+  "index": {
+    "controller": "./modules/index/script.js",
+    "view": "./modules/index/view.html"
+  },
+  "networkMap": {
+    "controller": "./modules/networkMap/controllers.js",
+    "view": "./modules/networkMap/view.html"
+  },
+  "mapInternet": {
+    "controller": "./modules/networkMap/mapInternet/controllers.js",
+    "view": "./modules/networkMap/mapInternet/view.html"
+  },
+  "mapRouter": {
+    "controller": "./modules/networkMap/mapRouter/controllers.js",
+    "view": "./modules/networkMap/mapRouter/view.html"
+  },
+  "mapClients": {
+    "controller": "./modules/networkMap/mapClients/controllers.js",
+    "view": "./modules/networkMap/mapClients/view.html"
+  },
+  "navigatorController": {
+    "controller": "./modules/index/script.js"
+  },
+  "search": {
+    "controller": "./modules/index/script.js",
+    "view": "./modules/index/view.html"
+  },
+  "timeSettings": {
+    "controller": "./modules/advanced/system/timeSettings/controllers.js",
+    "view": "./modules/advanced/system/timeSettings/view.html"
+  },
+  "reboot": {
+    "controller": "./modules/advanced/system/reboot/controllers.js",
+    "view": "./modules/advanced/system/reboot/view.html"
+  },
+  "firmwareDeco": {
+    "controller": "./modules/advanced/system/firmwareDeco/controllers.js",
+    "view": "./modules/advanced/system/firmwareDeco/view.html"
+  },
+  "firmwareIsp": {
+    "controller": "./modules/advanced/system/firmwareIsp/controllers.js",
+    "view": "./modules/advanced/system/firmwareIsp/view.html"
+  },
+  "sysLog": {
+    "controller": "./modules/advanced/system/sysLog/controllers.js",
+    "view": "./modules/advanced/system/sysLog/view.html"
+  },
+  "networkStatus": {
+    "controller": "./modules/advanced/network/networkStatus/controllers.js",
+    "view": "./modules/advanced/network/networkStatus/view.html"
+  },
+  "login": {
+    "controller": "./modules/login/controllers.js",
+    "view": "./modules/login/view.html"
+  },
+  "initLogin": {
+    "controller": "./modules/login/initLogin/controllers.js",
+    "view": "./modules/login/initLogin/view.html"
+  },
+  "localLogin": {
+    "controller": "./modules/login/localLogin/controllers.js",
+    "view": "./modules/login/localLogin/view.html"
+  },
+  "sysParams": {
+    "controller": "./modules/advanced/system/sysParams/controllers.js",
+    "view": "./modules/advanced/system/sysParams/view.html"
+  },
+  "wifiPower": {
+    "controller": "./modules/advanced/system/wifiPower/controllers.js",
+    "view": "./modules/advanced/system/wifiPower/view.html"
+  },
+  "cwmp": {
+    "controller": "./modules/advanced/system/cwmp/controllers.js",
+    "view": "./modules/advanced/system/cwmp/view.html"
+  },
+  "backupRestore": {
+    "controller": "./modules/advanced/system/backupRestore/controllers.js",
+    "view": "./modules/advanced/system/backupRestore/view.html"
+  }
+}

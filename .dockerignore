@@ -1,0 +1,15 @@
+.env
+.git
+.gitignore
+.pytest_cache
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite
+*.sqlite3
+data/
+tools/
+tests/
+*.egg-info/

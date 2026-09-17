@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Network Monitor 1.4</title>
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="eyebrow">INFRAESTRUTURA</div>
+      <h1>Network Monitor</h1>
+      <p>Presença e tráfego da rede local</p>
+    </div>
+    <div class="status" id="collector-status">A iniciar…</div>
+  </header>
+
+  <main>
+    <section class="cards" id="stats">
+      <article><span>Dispositivos</span><strong id="stat-devices">—</strong></article>
+      <article><span>Online</span><strong id="stat-online">—</strong></article>
+      <article><span>Offline</span><strong id="stat-offline">—</strong></article>
+      <article><span>Observações</span><strong id="stat-observations">—</strong></article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div><h2>Dispositivos</h2><p>Estado atual e velocidade instantânea. Clique num dispositivo para abrir o histórico.</p></div>
+        <button onclick="collectNow()">Recolher agora</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Estado</th><th>Nome</th><th>IP</th><th>MAC</th><th>Ligação</th><th>Download</th><th>Upload</th><th>Última observação</th></tr></thead>
+          <tbody id="devices"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel detail-panel" id="device-detail" hidden>
+      <div class="panel-head">
+        <div>
+          <div class="eyebrow">DETALHE DO DISPOSITIVO</div>
+          <h2 id="detail-name">—</h2>
+          <p id="detail-status">—</p>
+        </div>
+        <button onclick="closeDevice()">Fechar</button>
+      </div>
+      <div class="device-meta">
+        <div><span>IP</span><strong id="detail-ip">—</strong></div>
+        <div><span>MAC</span><strong id="detail-mac">—</strong></div>
+      </div>
+      <div class="panel-head history-head">
+        <div><h2>Histórico de ligações e tráfego</h2><p>O tráfego é calculado a partir dos contadores cumulativos devolvidos pela Deco durante cada sessão.</p></div>
+      </div>
+      <div class="table-wrap">
+        <table class="history-table">
+          <thead><tr><th>Início</th><th>Fim</th><th>Download</th><th>Upload</th><th>Total</th></tr></thead>
+          <tbody id="detail-history"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head"><div><h2>Últimas sessões</h2><p>Histórico de presença detetado pelo collector.</p></div></div>
+      <div class="table-wrap"><table><thead><tr><th>Dispositivo</th><th>Início</th><th>Fim</th><th>Estado</th></tr></thead><tbody id="sessions"></tbody></table></div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

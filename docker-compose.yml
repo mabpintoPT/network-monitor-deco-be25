@@ -1,0 +1,11 @@
+services:
+  network-monitor:
+    build: .
+    container_name: network-monitor
+    restart: unless-stopped
+    ports:
+      - "${HOST_PORT:-8085}:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data

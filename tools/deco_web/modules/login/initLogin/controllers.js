@@ -1,0 +1,1 @@
+jQuery.su.moduleManager.define("initLogin",{services:["ajax"],views:["initLoginView"],listeners:{ev_on_launch:function(e,i,n,s,t,a,o){o.ajax.request({proxy:"getUserInfoProxy",method:"read",success:function(e){n.initLoginView.wifiName.setValue(e.default_ssid),n.initLoginView.wifiPassword.setValue(e.default_pwd)}})}}},function(e,i,n,s,t,a){return{}});
